@@ -14,7 +14,24 @@ module.exports = {
       title: "3D render Practice"
     })
   ],
+  module: {
+    rules: [
+      {
+        test: /\.obj/i,
+        use: 'file-loader',
+        generator: {
+          filename: "assets/models/[name].[contenthash:6][ext]"
+        }
+      }
+    ],
+  },
   devServer: {
     static: './dist'
+  },
+  resolve:{
+    alias:{
+      '@': path.resolve(__dirname, 'src')
+    }
+    
   }
 }
