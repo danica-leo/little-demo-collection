@@ -15,10 +15,9 @@ module.exports = {
     }
   },
   output: {
-    filename: '[name].js',
+    filename: 'js/[name].js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
-    wasmLoading: 'async-node',
   },
   plugins: [
     new HTMLWebpackPlugin({
@@ -45,16 +44,17 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.obj/i,
-        use: 'file-loader',
+        test: /\.(obj|glb)$/i,
+        use: {
+          loader: 'file-loader',
+          options: {
+            outputPath: 'assets/models'
+          }
+        },
         generator: {
-          filename: "assets/models/[name].[contenthash:6][ext]"
+          filename: "[name].[ext]"
         }
-      },
-      {
-        test: /\.glb/i,
-        use: 'file-loader'
-      },
+      }
     ],
   },
   devServer: {
