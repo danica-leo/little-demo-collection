@@ -3,16 +3,33 @@ const HTMLWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 module.exports = {
   mode: 'none',
-  entry: './src/index.js',
+  entry: {
+    three: "three",
+    main: {
+      dependOn: 'three',
+      import: './src/index.js'
+    },
+    pageRing: {
+      dependOn: 'three',
+      import: "./src/pageRing.js"
+    }
+  },
   output: {
-    filename: 'main.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
     wasmLoading: 'async-node',
   },
   plugins: [
     new HTMLWebpackPlugin({
-      title: "3D render Practice"
+      title: "3D render - main",
+      chunks: ['main', 'three'],
+      filename: 'main.html'
+    }),
+    new HTMLWebpackPlugin({
+      title: "3D render - ring",
+      chunks: ['pageRing', 'three'],
+      filename: 'pageRing.html'
     }),
     new CopyWebpackPlugin({
       patterns: [
