@@ -27,23 +27,19 @@
 - 分析打包结果
 
 6. Caching
-
 - 管理输出文件名（影响缓存方式
 - runtime 代码包
 - vendors 代码包
 - TODO：moduleID？
 
 7. Authoring Libraries
-
 - 工具代码库的配置方式
 
-8. Environment Variables
-
-- 环境变量与 webpack-cli 的使用
+8. Environment Variables(No demo)
+- 环境变量与 webpack-cli 的使用(可以加自定义参数)
 - 配置文件可以导出函数
 
-9. Build Performance
-
+9. Build Performance(No demo)
 - 提升打包速度
 
 10. Content Security Policies
@@ -62,7 +58,7 @@
 
 - 安装 webpack 的方式（这应该放在第一章吧
 
-14. Hot Module Replacement
+14. Hot Module Replacement（extends chapter 5 demo）
 
 - 开发环境中的模块热替换
 
