@@ -25,10 +25,18 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Development"
+      title: "Hot Module Replacement"
     }),
     new webpack.HotModuleReplacementPlugin()
-  ]
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  }
 }
 
 const complier = webpack(config)

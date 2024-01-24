@@ -1,4 +1,5 @@
 import printMe from './print'
+import './style.css'
 
 window.printMe = printMe
 

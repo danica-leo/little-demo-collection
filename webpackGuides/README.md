@@ -27,19 +27,23 @@
 - 分析打包结果
 
 6. Caching
+
 - 管理输出文件名（影响缓存方式
 - runtime 代码包
 - vendors 代码包
 - TODO：moduleID？
 
 7. Authoring Libraries
+
 - 工具代码库的配置方式
 
 8. Environment Variables(No demo)
+
 - 环境变量与 webpack-cli 的使用(可以加自定义参数)
 - 配置文件可以导出函数
 
 9. Build Performance(No demo)
+
 - 提升打包速度
 
 10. Content Security Policies
@@ -61,6 +65,9 @@
 14. Hot Module Replacement（extends chapter 5 demo）
 
 - 开发环境中的模块热替换
+- 除了默认开箱即用的 HMR 以外，也可以配合 webpack watch 模式来自定义
+- HMR 的难点在于更新变更的文件，缓存没有更新的文件，webpack 借助各种插件来通知本地服务器文件发生了更新
+- 例如 style-loader，react-hot-loader
 
 15. Tree shaking
 
