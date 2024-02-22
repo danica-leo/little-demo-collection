@@ -90,9 +90,12 @@
 
 19. Shimming
 
-- 可以敲一下，有 demo 的不知道什么功能，看起来像是告诉 webpack 注册全局依赖自动导入
+- 基于chapter1的两个demo 
+- shim 垫片
+- 注册全局依赖（违反编程原则，尽量少用）
+- 
 
-20. TypeScript
+1.  TypeScript
 
 - TODO，集成 TS
 
