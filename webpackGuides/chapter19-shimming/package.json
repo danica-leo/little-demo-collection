@@ -11,6 +11,8 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "exports-loader": "^5.0.0",
+    "imports-loader": "^5.0.0",
     "webpack": "^5.38.1",
     "webpack-cli": "^4.7.2"
   },
