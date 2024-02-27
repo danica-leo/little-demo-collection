@@ -9,7 +9,6 @@
   },
   "keywords": [],
   "author": "",
-  "license": "MIT",
   "devDependencies": {
     "exports-loader": "^5.0.0",
     "imports-loader": "^5.0.0",
@@ -17,6 +16,8 @@
     "webpack-cli": "^4.7.2"
   },
   "dependencies": {
-    "lodash": "^4.17.21"
+    "babel-polyfill": "^6.26.0",
+    "lodash": "^4.17.21",
+    "whatwg-fetch": "^3.6.20"
   }
 }
