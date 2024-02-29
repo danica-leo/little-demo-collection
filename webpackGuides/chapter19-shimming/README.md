@@ -28,4 +28,8 @@ B. 对于个别浏览器的功能兼容性实现 polyfill（根据实际需求�
 process.NODE.env?？？？？
 
 重读 granular shimming 1.本节更想演示的是一些历史遗留代码无法更改源文件，但需要在后续实现上兼容 this 不指向“预设执行上下文”的情况。使用 imports-loader 可以强制将 window 全局执行上下文绑定在指定文件上
-TODO 自己实现一个demo
+TODO 发现官网的demo就能用，输入法的定位插件是不是有点怪啊，什么怪怪的bug？
+为啥已经alert弹窗了但还是会有
+index.bundle.js:2 Uncaught TypeError: this.alert is not a function？
+执行的代码和这个error是同一层的吗？哦是两个alert
+那为什么下面这个有问题，但上面的没问题
