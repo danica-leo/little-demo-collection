@@ -13,8 +13,11 @@ B. 对于个别浏览器的功能兼容性实现 polyfill（根据实际需求�
 分节笔记：
 
 1. global shimming 中提到使用['lodash','join']的方式全局引入 join 变量可以应用 tree shaking，但打包结果的代码包和之前对比并无区别（没有减少）
-2. [TODO]granular shimming （细节上的代码缓冲垫片）中提到在 commonJS 的包中 this 会指向到 module.exports（但应该指向在 window 里），但如何确定？demo 还缺失了 imports-loader 的安装指示？
-3. global exported 使用 exports-loader 改装旧代码，可以在不改动旧文件的情况下使旧代码兼容使用 module 功能导入导入
+2. granular shimming （细节上的代码缓冲垫片）中提到在 commonJS 的包中 this 会指向到 module.exports（但应该指向在 window 里），但如何确定？demo 还缺失了 imports-loader 的安装指示？
+   - 本节更想演示的是一些历史遗留代码无法更改源文件，但需要在后续实现上兼容 this 不指向“预设执行上下文”的情况。使用 imports-loader 可以强制将 window 全局执行上下文绑定在指定文件上
+   - 感觉官方demo不太合适，首先示例中的代码包含document API的调用，目前感觉不可能在CommonJS上下文中运行
+   - 总结一下大概是可以给某个文件的代码上包装指定执行上下文
+3. global exported 使用 exports-loader 导出古老代码里没有导出的值
 4. loading polyfills 通过使用 webpack 多入口打包出单独的 polyfill 包，再在入口页根据浏览器功能加载不同的包（babel-polyfill \* whatwg-fetch）
 5. [TODO]further optimizations babel-preset-env 同时还支持将全局 babel-polyfill 导入转换为更精细的逐个特征导入模式：
 6. [TODO]node build-ins node 的内置功能可以直接在配置文件中填充
@@ -22,14 +25,9 @@ B. 对于个别浏览器的功能兼容性实现 polyfill（根据实际需求�
 8. [TODO]更多阅读
 
 总结：
-该章节讲述了以下两点 1.如何使用 webpack 处理遗留代码包（legacy codes）
-1.1 全局导入变量
-1.2 this 的指向（）
-process.NODE.env?？？？？
-
-重读 granular shimming 1.本节更想演示的是一些历史遗留代码无法更改源文件，但需要在后续实现上兼容 this 不指向“预设执行上下文”的情况。使用 imports-loader 可以强制将 window 全局执行上下文绑定在指定文件上
-TODO 发现官网的demo就能用，输入法的定位插件是不是有点怪啊，什么怪怪的bug？
-为啥已经alert弹窗了但还是会有
-index.bundle.js:2 Uncaught TypeError: this.alert is not a function？
-执行的代码和这个error是同一层的吗？哦是两个alert
-那为什么下面这个有问题，但上面的没问题
+该章节讲述了以下内容
+1. 如何使用 webpack 处理遗留代码包（legacy codes）
+  1.1 通过 webpack.ProvidePlugin 提供全局导入变量
+  1.2 通过 imports-loader 更改执行时 this 的指向
+  1.3 通过 exports-loader 导出未使用模块导出语句的值
+2. 使用 babel-polyfill 让代码按需加载polyfill

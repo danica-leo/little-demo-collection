@@ -38,4 +38,15 @@ let d3A
 const d4 = new D("d4", d1.print.bind(d2))
 d4.print()//?
 let d4A
-(d4A = d4.print)()//?
+(d4A = d4.print)();//?
+
+(() => {
+    (function () {
+        'use strict'
+        console.info("d5-this", this)
+        function print () {
+            console.info("d5-print-this", this)
+        }
+        print()
+    }.call(window))
+})()
