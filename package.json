@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "friendly-errors-webpack-plugin": "^1.7.0"
+  }
+}
