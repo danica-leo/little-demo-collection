@@ -1,3 +1,4 @@
+// Simple Values
 import UIKit
 
 var str:String
@@ -37,3 +38,30 @@ let quotation = """
 var fruits = ["strawberries", "limes", "tangerines"]
 fruits[1] = "grapes"
 print(fruits)
+fruits.append("blueberries")
+
+var occupations = [
+    "Malcolm": "Captain",
+    "Keylee": "Mechanic"
+]
+occupations["Jayne"]="Public Relations"
+fruits.append("blueberries")
+
+fruits = []
+occupations = [:]
+
+//Control FLow
+
+let individualScores = [74,43,107,87,12]
+var teamScore = 0
+for score in individualScores {
+    if score > 50 {
+        teamScore += 3
+    }
+    else {
+        teamScore += 1
+    }
+}
+print(teamScore)
+
+
