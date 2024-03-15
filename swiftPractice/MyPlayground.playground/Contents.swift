@@ -65,3 +65,31 @@ for score in individualScores {
 print(teamScore)
 
 
+let scoreDecoration = if teamScore > 10 {
+    "🤣"
+} else {
+    ""
+}
+print(teamScore,scoreDecoration)
+
+var optionalString: String? = "Hello"
+print(optionalString == nil)
+var optionalEmtpy: String?
+print(optionalEmtpy == nil)
+
+var optionalName: String? = "John Appleseed"
+var greeting2 = "Hello"
+if let name = optionalName {
+    greeting2  = "Hello, \(name)"
+}
+optionalName = nil
+var greeting3 = "Hello3"
+if let name2 = optionalName {
+    greeting3 = "Hello, \(name2)"
+} else {
+    greeting3 = "Is there any body?"
+}
+
+let nickname: String? = nil
+let fullNmae: String = "Davor"
+let informalGreeting = ""
