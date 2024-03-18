@@ -19,7 +19,7 @@ function createFunctions () {
         return num
       }
     }(i)
-   u  }
+  }
   return result
 }
 

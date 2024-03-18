@@ -76,4 +76,3 @@ console.log(view.getInt16(0)) // -1
  */
 
 //TODO 继续敲接下来的代码
-
