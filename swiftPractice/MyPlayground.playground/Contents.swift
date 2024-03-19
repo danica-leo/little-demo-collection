@@ -168,3 +168,85 @@ for i in 0..<4{
 print(total2)
 
 // 4 Functions and Closures
+// 4.1 declare a function
+func sayHello(name:String,weather:String)->String{
+    return "Hi \(name)! today is \(weather)~"
+}
+
+sayHello(name:"Davor",weather:"sunday")
+
+// 4.2 Write _ to use no argument label, or write a custom argument label before the parameter name
+func greet(_ person:String, on day:String)->String{
+    return "Hi \(person)! today is \(day)"
+}
+
+greet("Nicely",on:"Tuesday")
+
+//4.3 The tuple returned by the function
+// wronged [Int]
+func calculateStatistics(scores:[Int])->(max:Int,min:Int,sum:Int){
+    var max = scores[0] , min = scores[0] , sum = 0
+    
+    for num in scores{
+        if num > max {
+            max = num
+        }else if num < min {
+            min = num
+        }
+        sum += num
+    }
+    
+    return (max,min,sum)
+}
+
+let statistics = calculateStatistics(scores:[5,3,100,3,9])
+print(statistics.sum)
+print(statistics.2) //4, []
+
+
+
+//4.4 Nested function with outer vaÏriable (called as closure in JS)
+func returnFifteen() -> Int {
+    var y = 10
+    func add(){
+        y += 5
+    }
+    add()
+    return y
+}
+
+//4.5 first-class type can be returned : function is first-clas type
+//wrong count:2
+func makeIncrementer()->((Int)->Int){
+    func addOne(number:Int)->Int{
+        return 1 + number
+    }
+    return addOne
+}
+var increment = makeIncrementer()
+increment(7)
+
+//4.6 function can take another function as one of its paraments
+func hasAnyMatches(list:[Int],condition:(Int)->Bool)->Bool{
+    for i in list {
+        if condition(i){
+            return true
+        }
+    }
+    return false
+}
+func lessThanTen(number: Int) -> Bool {
+    return number < 10
+}
+let nums = [20,19,7,12]
+hasAnyMatches(list:nums,condition: lessThanTen)
+
+//4.7 special closure: Function and normal closure : ({}), Watch for the word: IN
+let nums2 = nums.map({(number:Int) -> Int in
+    let result = 3 * number
+    return result
+})
+print(nums2)
+
+//4.7.1 Experiment
+//TODo
