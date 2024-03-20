@@ -205,7 +205,7 @@ print(statistics.2) //4, []
 
 
 
-//4.4 Nested function with outer vaÏriable (called as closure in JS)
+//4.4 Nested function with outer variable (called as closure in JS)
 func returnFifteen() -> Int {
     var y = 10
     func add(){
@@ -242,6 +242,7 @@ let nums = [20,19,7,12]
 hasAnyMatches(list:nums,condition: lessThanTen)
 
 //4.7 special closure: Function and normal closure : ({}), Watch for the word: IN
+// IN is very abnormal，why in？？？
 let nums2 = nums.map({(number:Int) -> Int in
     let result = 3 * number
     return result
@@ -249,4 +250,28 @@ let nums2 = nums.map({(number:Int) -> Int in
 print(nums2)
 
 //4.7.1 Experiment
-//TODo
+//TODO
+let nums3 = nums.map({(number:Int) -> Int in
+    let rest = number % 2
+    if rest > 0 {
+        return 0
+    }else {
+        return number
+    }
+})
+print(nums3)
+
+//4.8 concise closures - already now callback
+//wrong count 1
+let mappedNumbers = nums.map({number in 3*number})
+print(mappedNumbers)
+
+
+//4.9 concise closures - refer to parameters by number
+//When a closure is the only argument to a function ,you can omit the paraentheses entirely
+let sortedNumbers = nums.sorted{$0 > $1}
+print(sortedNumbers)
+
+//4.9.1 try again 4.8 with number refer of parameters
+let mappedNumbers2 = nums.map{3*$0}
+print(mappedNumbers2)
