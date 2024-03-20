@@ -275,3 +275,62 @@ print(sortedNumbers)
 //4.9.1 try again 4.8 with number refer of parameters
 let mappedNumbers2 = nums.map{3*$0}
 print(mappedNumbers2)
+
+// 5 Objects and Classes
+
+// 5.1 Create a class
+class Shape {
+    let color = "red"
+    var numberOfSides = 0
+    func simpleDescription () -> String {
+        return "A simple with \(numberOfSides) sides."
+    }
+    func setSides(number:Int) -> () {
+        numberOfSides = number
+    }
+}
+
+// 5.2 create an instance of class
+var shape1 = Shape()
+shape1.numberOfSides = 3
+var shape1Desc = shape1.simpleDescription()
+
+var shape2 = Shape()
+shape2.setSides(number: 8)
+var shape2Desc = shape2.simpleDescription()
+
+// 5.3 class initializer
+class NamedShape {
+    var name:String
+    var numberOfSides:Int = 0
+    
+    init(name:String){
+        self.name = name
+    }
+    
+    func simpleDescription()->String{
+        return "A shape with \(numberOfSides) sides"
+    }
+}
+
+// 5.4 deinit
+// 5.5 subclass :colon
+// 5.6 override superclass function with "override" keywords
+class Square: NamedShape {
+    var sideLength : Double
+    
+    init(sideLength:Double,name:String){
+        self.sideLength = sideLength
+        super.init(name:name)
+        numberOfSides = 4
+    }
+    
+    func area() -> Double{
+        return sideLength * sideLength
+    }
+    
+    override func simpleDescription() -> String {
+        return "A square with sides of length \(sideLength)"
+    }
+}
+
