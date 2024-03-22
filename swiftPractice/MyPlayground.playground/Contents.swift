@@ -416,5 +416,55 @@ print(triangleAndSquare.triangle.sideLength)
 triangleAndSquare.square = Square(sideLength: 50, name: "larger square")
 print(triangleAndSquare.triangle.sideLength)
 
-// 5.9
+// 5.9 optional values？
+// TODO:I dont understand
+let optionalSquare: Square? = Square(sideLength: 2.5, name: "optional square")
+let sideLength = optionalSquare?.sideLength
+
+
+// 6 Enumeration
+// 6.1 use enum to create an enumeration
+enum Rank:Int {
+    case ace = 1
+    case two,three,four,five,six,seven,eight,nine,ten
+    case jack,queen,king
+    
+    func simpleDescription()->String{
+        switch self {
+        case .ace:
+            return "ace"
+        case .jack:
+            return "jack"
+        case .queen:
+            return "queen"
+        case .king:
+            return "king"
+        default:
+            return String(self.rawValue)
+        }
+    }
+}
+
+let ace = Rank.two
+let aceRawValue = ace.rawValue
+
+// 6.1.1 Experiment:Write an function that compares two Rank values by comparing their raw values.
+
+let enum1 = Rank.ace
+let enum2 = Rank.two
+func compareEnumRank (v1:Rank,v2:Rank)->Bool{
+    return v1.rawValue > v2.rawValue
+}
+compareEnumRank(v1:enum1,v2:enum2)
+enum1.simpleDescription()
+
+// 6.2 use init?(rawValue:) to make an instance of enum
+if let convertedRank = Rank(rawValue: 13){
+    let simpleDesc = convertedRank.simpleDescription()
+}
+if let convertedRank = Rank(rawValue: 15){
+    let simpleDesc = convertedRank.simpleDescription()
+}
+
+// 6.3 rawValue is not necessary
 // TODO
