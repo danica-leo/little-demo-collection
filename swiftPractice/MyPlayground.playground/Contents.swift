@@ -467,4 +467,88 @@ if let convertedRank = Rank(rawValue: 15){
 }
 
 // 6.3 rawValue is not necessary
-// TODO
+enum Suit {
+    case spades, hearts , diamonds ,clubs
+    func simpleDescription()->String{
+        switch self {
+        case .spades:
+            return "spades"
+        case .hearts:
+            return "hearts"
+        case .diamonds:
+            return "diamonds"
+        case .clubs:
+            return "clubs"
+        }
+    }
+}
+let hearts = Suit.hearts
+let heartsDescription = hearts.simpleDescription()
+
+// 6.3.1 Experiments: Add a color() methods to Suit
+// Wrong count:1.multi case
+enum SuitWithColor {
+    case spades,hearts,diamonds,clubs
+    func simpleDescription()->String{
+        switch self{
+        case .spades:
+            return "spades"
+        case .hearts:
+            return "hearts"
+        case .diamonds:
+            return "diamonds"
+        case .clubs:
+            return "clubs"
+        }
+    }
+    func color()->String{
+        switch self{
+        case .spades,.clubs:
+            return "black"
+        case .hearts,.diamonds:
+            return "red"
+        }
+    }
+}
+
+let hearts2 = SuitWithColor.hearts
+let spades = SuitWithColor.spades
+hearts2.color()
+spades.color()
+
+// 6.4 associate value with the enum case
+enum ServerResponse {
+    case result(String,String)
+    case failure(String)
+    case pending
+}
+
+let success1 = ServerResponse.result("6:00 am", "6:08 pm")
+let failure1 = ServerResponse.failure("Out of cheese")
+func handleServerResponse(response:ServerResponse)->Void{
+    switch(response){
+    case let .result(sunrise,sunset):
+        print("Sunrise at \(sunrise),and sunset is at \(sunset)")
+    case let .failure(message):
+        print("Failure... \(message)")
+    case .pending:
+        print("Now is pending")
+    }
+}
+handleServerResponse(response:success1)
+handleServerResponse(response:failure1)
+// 6.4.1 Experiment: add a third case
+let pending = ServerResponse.pending
+handleServerResponse(response:pending)
+
+// 6.5 create struct
+struct Card{
+    var rank:Rank
+    var suit:Suit
+    func simpleDescription()->String{
+        return "The \(rank.simpleDescription()) of \(suit.simpleDescription())"
+    }
+}
+
+// 6.5.1 Experiment: Write a function that returns an array containing a full deck of cards,with one card of each combination of rank and suit
+// this maybe need a lot of time , an hour? two patatos!
