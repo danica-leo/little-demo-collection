@@ -549,6 +549,64 @@ struct Card{
         return "The \(rank.simpleDescription()) of \(suit.simpleDescription())"
     }
 }
+let threeOfSpades = Card(rank: .three, suit: .spades)
+let threeOfSpadesDescription =  threeOfSpades.simpleDescription()
 
 // 6.5.1 Experiment: Write a function that returns an array containing a full deck of cards,with one card of each combination of rank and suit
 // this maybe need a lot of time , an hour? two patatos!
+// TODO:DO IT!WHEN YOU HAVE TWO PATATOS
+// how to iterate every rank and suit?
+
+// 7 Concurrency 并发
+// 7.1 async
+func fetchUserID(from server:String) async -> Int{
+    // what is meaning of from ?
+    if server == "primary"{
+        return 97
+    }
+    return 501
+}
+
+// 7.2 await
+func fetchUsername(from server:String) async -> String{
+    let userID = await fetchUserID(from: server)
+    if userID == 501 {
+        return "John Appleseed"
+    }
+    return "Guest"
+}
+
+// 7.3 async let
+func connectUser(to server:String) async {
+    async let userID =  fetchUserID(from: server)
+    async let username = fetchUsername(from: server)
+    let greeting = await "Hello \(username),user ID \(userID)"
+    print(greeting)
+}
+
+// 7.4 Task
+Task {
+    await connectUser(to:"primary")
+}
+
+// 7.5 task groups
+// TODO : DONT UNDERSTAND , REREAD
+let userIDs = await withTaskGroup(of:Int.self){group in
+    for server in ["primary","secondary","development"]{
+        group.addTask{
+            return await fetchUserID(from:server)
+        }
+    }
+    
+    var results:[Int] = []
+    for await result in group{
+        results.append(result)
+    }
+    return results
+}
+print(userIDs)
+
+// 7.6 actor
+actor ServerConnection {
+    var server:String = "primary"
+}
