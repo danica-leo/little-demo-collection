@@ -261,7 +261,7 @@ let nums3 = nums.map({(number:Int) -> Int in
 })
 print(nums3)
 
-//4.8 concise closures - already now callback
+//4.8 concise closures - already know callback
 //wrong count 1
 let mappedNumbers = nums.map({number in 3*number})
 print(mappedNumbers)
@@ -424,7 +424,7 @@ let sideLength = optionalSquare?.sideLength
 
 // 6 Enumeration
 // 6.1 use enum to create an enumeration
-enum Rank:Int {
+enum Rank:Int,CaseIterable{
     case ace = 1
     case two,three,four,five,six,seven,eight,nine,ten
     case jack,queen,king
@@ -487,7 +487,7 @@ let heartsDescription = hearts.simpleDescription()
 
 // 6.3.1 Experiments: Add a color() methods to Suit
 // Wrong count:1.multi case
-enum SuitWithColor {
+enum SuitWithColor: CaseIterable {
     case spades,hearts,diamonds,clubs
     func simpleDescription()->String{
         switch self{
@@ -544,7 +544,7 @@ handleServerResponse(response:pending)
 // 6.5 create struct
 struct Card{
     var rank:Rank
-    var suit:Suit
+    var suit:SuitWithColor
     func simpleDescription()->String{
         return "The \(rank.simpleDescription()) of \(suit.simpleDescription())"
     }
@@ -554,11 +554,33 @@ let threeOfSpadesDescription =  threeOfSpades.simpleDescription()
 
 // 6.5.1 Experiment: Write a function that returns an array containing a full deck of cards,with one card of each combination of rank and suit
 // this maybe need a lot of time , an hour? two patatos!
-// TODO:DO IT!WHEN YOU HAVE TWO PATATOS
+// DO IT!WHEN YOU HAVE TWO PATATOS
 // how to iterate every rank and suit?
+func getFullDeckOfCards() -> Array<Card>{
+    var result:Array<Card> = []
+
+    for suitItem in SuitWithColor.allCases{
+        print(suitItem)
+        for rankItem in Rank.allCases{
+            print(rankItem)
+            var newCard = Card(rank:rankItem,suit:suitItem)
+            result.append(newCard)
+        }
+    }
+    
+    return result
+}
+let fullDeckOfCards=getFullDeckOfCards()
+fullDeckOfCards.forEach({card in
+    let desc = card.simpleDescription()
+    print(desc)
+})
 
 // 7 Concurrency 并发
 // 7.1 async
+// from is input param name
+// and server is inner execute name
+// this param has two name
 func fetchUserID(from server:String) async -> Int{
     // what is meaning of from ?
     if server == "primary"{
@@ -590,7 +612,10 @@ Task {
 }
 
 // 7.5 task groups
-// TODO : DONT UNDERSTAND , REREAD
+// TODO : REWRITE
+// what is Int.self?
+// of appears to be a fixed parameter name?
+print(Int.self)
 let userIDs = await withTaskGroup(of:Int.self){group in
     for server in ["primary","secondary","development"]{
         group.addTask{
@@ -607,6 +632,46 @@ let userIDs = await withTaskGroup(of:Int.self){group in
 print(userIDs)
 
 // 7.6 actor
+// TODO: donnot understand ,reread
 actor ServerConnection {
     var server:String = "primary"
+    private var activeUsers:[Int] = []
+    func connect() async -> Int {
+        let userID =  await fetchUserID(from:server)
+        // ... communicate with server
+        activeUsers.append(userID)
+        return userID
+    }
 }
+let server = ServerConnection()
+let userID = await server.connect()
+
+// 8 Protocols and Extensions
+// 8.1 protocol
+protocol ExampleProtocol{
+    var simpleDescription:String { get }
+    mutating func adjust()
+}
+
+// 8.2 adopt protocols : classes, enumerations, structures
+class SimpleClass:ExampleProtocol{
+    var simpleDescription: String = "A very simple class."
+    var anotherProperty:Int = 69105
+    func adjust(){
+        simpleDescription += " Now 100% adjusted."
+    }
+}
+var a =  SimpleClass()
+a.adjust()
+let aDesc = a.simpleDescription
+
+struct SimpleStruture:ExampleProtocol{
+    var simpleDescription: String = "A simple structure"
+    mutating func adjust(){
+        simpleDescription += " (adjusted)"
+    }
+}
+var b = SimpleStruture()
+b.adjust()
+let bDesc = b.simpleDescription
+// 8.2.1 Experiment TODO
