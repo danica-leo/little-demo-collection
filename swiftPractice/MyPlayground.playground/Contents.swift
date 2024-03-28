@@ -650,12 +650,15 @@ let userID = await server.connect()
 // 8.1 protocol
 protocol ExampleProtocol{
     var simpleDescription:String { get }
+    //TODO how to write set in an entity
+    var experimentDesc:String {get set}
     mutating func adjust()
 }
 
 // 8.2 adopt protocols : classes, enumerations, structures
 class SimpleClass:ExampleProtocol{
     var simpleDescription: String = "A very simple class."
+    var experimentDesc:String = "8.2.1 Experiment:SimpleClass"
     var anotherProperty:Int = 69105
     func adjust(){
         simpleDescription += " Now 100% adjusted."
@@ -667,6 +670,8 @@ let aDesc = a.simpleDescription
 
 struct SimpleStruture:ExampleProtocol{
     var simpleDescription: String = "A simple structure"
+    var experimentDesc:String = "8.2.1 Experiment:SimpleStruture"
+    // noice the use of mutating
     mutating func adjust(){
         simpleDescription += " (adjusted)"
     }
@@ -674,4 +679,47 @@ struct SimpleStruture:ExampleProtocol{
 var b = SimpleStruture()
 b.adjust()
 let bDesc = b.simpleDescription
-// 8.2.1 Experiment TODO
+
+// 8.2.1 Experiment
+a.experimentDesc += "new yeah~"
+a.simpleDescription += "yeah~yeah~"
+
+// 8.3 keyword: extension
+protocol ExampleProtocolInt{
+    var simpleDescription:String { get }
+    mutating func adjust()
+}
+
+extension Int: ExampleProtocolInt {
+    var simpleDescription: String {
+        return "The number \(self)"
+    }
+    var experimentDesc: String {
+        return "This is needed"
+    }
+    mutating func adjust() {
+        self += 42
+    }
+}
+print(7.simpleDescription)
+// 8.3.1 Experiment
+protocol AbsoluteProtocol{
+    var absoluteValue:String {get}
+}
+extension Double:AbsoluteProtocol{
+    var absoluteValue:String{
+        var result = self
+        if(result<0){
+            result = -self
+        }
+        return "Absolute value of \(self),is \(result) "
+    }
+}
+let doubleA:Double = -7.88
+let doubleB:Double = 6.66
+print(doubleA.absoluteValue)
+print(doubleB.absoluteValue)
+// 8.4 protocol is strict, methods outside the protocol definition aren't available
+// any ExampleProtocol means that this value can be any type that comforms to the "ExampleProtocol"
+let protocolValue: any ExampleProtocol = a
+
