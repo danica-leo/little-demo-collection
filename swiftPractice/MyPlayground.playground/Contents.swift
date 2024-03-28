@@ -722,4 +722,28 @@ print(doubleB.absoluteValue)
 // 8.4 protocol is strict, methods outside the protocol definition aren't available
 // any ExampleProtocol means that this value can be any type that comforms to the "ExampleProtocol"
 let protocolValue: any ExampleProtocol = a
+print(protocolValue.simpleDescription)
 
+// 9 Error Handling
+// 9.1 Error protocol
+enum PrinterError: Error{
+    case outOfPaper
+    case noToner
+    case onFire
+}
+
+// 9.2 throws func and throw
+func send(job:Int, toPrinter printerName:String) throws -> String {
+    if printerName == "Never Has Toner"{
+        throw PrinterError.noToner
+    }
+    return "Job sent"
+}
+
+// 9.3 first way of handle errors - do-catch
+do{
+    let printerResponse =  try send(job:1040,toPrinter:"Bi Sheng")
+    print(printerResponse)
+}catch{
+    print(error)
+}
