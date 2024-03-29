@@ -1,4 +1,4 @@
-
+print("debug")
 // 7 Concurrency 并发
 // 7.1 async
 // from is input param name
@@ -35,39 +35,41 @@ Task {
 }
 
 // 7.5 task groups
-// TODO : REWRITE
+// TODO: REWRITE
+// TODO: here code will interrupted code execution,but I donnot know how to fix it .
 // what is Int.self?
 // of appears to be a fixed parameter name?
 print(Int.self)
-let userIDs = await withTaskGroup(of:Int.self){group in
-    for server in ["primary","secondary","development"]{
-        group.addTask{
-            return await fetchUserID(from:server)
-        }
-    }
-    
-    var results:[Int] = []
-    for await result in group{
-        results.append(result)
-    }
-    return results
-}
-print(userIDs)
+//let userIDs = await withTaskGroup(of:Int.self){ group in
+//    for server in ["primary","secondary","development"] {
+//        group.addTask {
+//            return await fetchUserID(from:server)
+//        }
+//    }
+//    
+//    var results:[Int] = []
+//    for await result in group {
+//        results.append(result)
+//    }
+//    return results
+//}
+//print(userIDs)
 
 // 7.6 actor
 // TODO: donnot understand ,reread
-actor ServerConnection {
-    var server:String = "primary"
-    private var activeUsers:[Int] = []
-    func connect() async -> Int {
-        let userID =  await fetchUserID(from:server)
-        // ... communicate with server
-        activeUsers.append(userID)
-        return userID
-    }
-}
-let server = ServerConnection()
-let userID = await server.connect()
+// TODO: here code will interrupted code execution,but I donnot know how to fix it .
+//actor ServerConnection {
+//    var server:String = "primary"
+//    private var activeUsers:[Int] = []
+//    func connect() async -> Int {
+//        let userID =  await fetchUserID(from:server)
+//        // ... communicate with server
+//        activeUsers.append(userID)
+//        return userID
+//    }
+//}
+//let server = ServerConnection()
+//let userID = await server.connect()
 
 // 8 Protocols and Extensions
 // 8.1 protocol
@@ -125,6 +127,7 @@ extension Int: ExampleProtocolInt {
     }
 }
 print(7.simpleDescription)
+
 // 8.3.1 Experiment
 protocol AbsoluteProtocol{
     var absoluteValue:String {get}
@@ -142,10 +145,12 @@ let doubleA:Double = -7.88
 let doubleB:Double = 6.66
 print(doubleA.absoluteValue)
 print(doubleB.absoluteValue)
+
 // 8.4 protocol is strict, methods outside the protocol definition aren't available
 // any ExampleProtocol means that this value can be any type that comforms to the "ExampleProtocol"
 let protocolValue: any ExampleProtocol = a
 print(protocolValue.simpleDescription)
+
 
 // 9 Error Handling
 // 9.1 Error protocol
@@ -160,9 +165,9 @@ func send(job:Int, toPrinter printerName:String) throws -> String {
     if printerName == "Never Has Toner"{
         throw PrinterError.noToner
     }
-//    else if printerName == "Fired!"{
-//        throw PrinterError.onFire
-//    }
+    else if printerName == "Fired!"{
+        throw PrinterError.onFire
+    }
     return "Job sent"
 }
 
@@ -186,6 +191,8 @@ do {
 // 9.4.1 Experiment TODO
 do {
     let printerResponse = try send(job:1440,toPrinter: "Gutenberg")
+    // this line will throw an error handled by the first catch block
+    let printerResErrorOfFirstCatchblock = try send(job:1404,toPrinter: "Fired")
     print(printerResponse)
 } catch PrinterError.onFire {
     print("I'll just put this over here,with the rest of the fire")
@@ -195,3 +202,4 @@ do {
 }catch{
     print(error)
 }
+
