@@ -228,3 +228,60 @@ if fridgeContains("eggs"){
 }
 print(fridgeIsOpen)
 
+// 10.0 Generics
+
+// 10.1 name inside angle brackets
+func makeArray<Item>(repeating item:Item,numberOfTimes:Int)->[Item]{
+    var result:[Item] = []
+    for _ in 0..<numberOfTimes {
+        result.append(item)
+    }
+    return result
+}
+makeArray(repeating: "knock", numberOfTimes: 4)
+
+// 10.2 more gereric forms - generic enum
+// TODO: too abstract,reread
+enum OptionalValue<Wrapped>{
+    case none
+    case some(Wrapped)
+}
+
+var possibleInteger: Optional<Int> = .none
+possibleInteger = .some(100)
+
+// 10.3 "where" and generic func
+func anyCommonElements<T:Sequence,U:Sequence>(_ lhs:T, _ rhs: U) -> Bool
+    where T.Element:Equatable,T.Element == U.Element
+{
+    for lhsItem in lhs {
+        for rhsItem in rhs {
+            if lhsItem == rhsItem {
+                return true
+            }
+        }
+    }
+    return false
+}
+
+anyCommonElements([1,2,3],[3])
+
+
+// 10.3.1 Experiment
+func getAnyCommonElement<T:Sequence,U:Sequence>(_ lhs:T, _ rhs: U) -> any Sequence
+where T.Element:Equatable,T.Element == U.Element
+{
+    var result:[T.Element] = []
+    for lhsItem in lhs {
+        for rhsItem in rhs{
+            if lhsItem == rhsItem {
+                result.append(lhsItem)
+            }
+               
+        }
+    }
+    return result
+}
+getAnyCommonElement([1,2,3],[3])
+
+// Congradulations! END!
