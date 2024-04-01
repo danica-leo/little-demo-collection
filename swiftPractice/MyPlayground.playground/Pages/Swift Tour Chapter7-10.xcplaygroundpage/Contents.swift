@@ -165,13 +165,13 @@ func send(job:Int, toPrinter printerName:String) throws -> String {
     if printerName == "Never Has Toner"{
         throw PrinterError.noToner
     }
-    else if printerName == "Fired!"{
+    else if printerName == "Fired"{
         throw PrinterError.onFire
     }
     return "Job sent"
 }
 
-// 9.3 first way of handle errors - do-catch
+// 9.3 the first way of handle errors - do-catch
 do {
     let printerResponse =  try send(job:1040,toPrinter:"Bi Sheng")
     print(printerResponse)
@@ -188,11 +188,14 @@ do {
 }
 
 // 9.4 multiple catch blocks
-// 9.4.1 Experiment TODO
+// 9.4.1 Experiment
 do {
     let printerResponse = try send(job:1440,toPrinter: "Gutenberg")
     // this line will throw an error handled by the first catch block
     let printerResErrorOfFirstCatchblock = try send(job:1404,toPrinter: "Fired")
+    // second block~
+    // let printerResErrorOfFirstCatchblock = try send(job:1404,toPrinter: "Never Has Toner")
+    // TODO:  DON NOT KNOW TO TRIGGER THE THIRD BLOCK
     print(printerResponse)
 } catch PrinterError.onFire {
     print("I'll just put this over here,with the rest of the fire")
@@ -202,4 +205,26 @@ do {
 }catch{
     print(error)
 }
+
+// 9.5 the second way of handle errors -  try?
+let printerSuccess = try? send(job:1884, toPrinter: "Mergenthaler")
+let printerFailure = try? send(job:1885,toPrinter: "Never Has Toner")
+
+// 9.6 defer
+var fridgeIsOpen = false
+let fridgeContent = ["milk","eggs","leftovers"]
+
+func fridgeContains(_ food:String)->Bool{
+    fridgeIsOpen =  true
+    defer {
+        fridgeIsOpen = false
+    }
+    let result = fridgeContent.contains(food)
+    return result
+}
+
+if fridgeContains("eggs"){
+    print("Found eggs")
+}
+print(fridgeIsOpen)
 
