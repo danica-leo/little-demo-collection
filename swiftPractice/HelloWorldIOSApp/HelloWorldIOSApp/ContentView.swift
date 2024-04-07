@@ -19,20 +19,29 @@ struct ContentView: View {
         VStack {
             MapView()
                 .frame(height:300)
+            
             CircleImage()
                 .offset(y: -130)
                 .padding(.bottom,-130)
+            
             VStack(alignment: .leading) {
                 Text("Turtle Rock")
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 HStack {
                     Text("Joshua Tree National Park")
-                        .font(.subheadline)
                     Spacer()
                     Text("California")
-                        .font(.subheadline)
                 }
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                
+                Divider()
+                
+                Text("About Turtle Rock")
+                    .font(.title2)
+                Text("Desciptive text goes here")
             }
+            
             .padding()
             
             Spacer()
