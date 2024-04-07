@@ -10,7 +10,8 @@
 // finish Section 3
 // finish Section 4
 // finish Section 5
-// start Section 6
+// finish Section 6
+// finish Section 7
 
 import SwiftUI
 
