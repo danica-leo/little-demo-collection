@@ -43,3 +43,27 @@ print(friendlyWelcome)
 
 // 4.1 string interpolation
 print("The current value of friendlyWelcome is \(friendlyWelcome)")
+
+// 5 Comments
+
+// 5.1 single-line comments
+/*
+   5.2 multiline comments / asterisk
+ */
+/**
+/* 5.3 nested multiline comments*/
+ */
+
+// 6 Semicolons
+// does not require you to write semicolon;but are required if write multiple separate statements on a single line;
+
+
+/** 7 Integers
+ swift provides signed and unsigned integers in 8, 16, 32, 64 bit forms. These integers follow a naming convention similar to C.
+*/
+// 7.1 integer bounds
+let minValue = UInt8.min
+let maxValue = UInt8.max
+
+// 7.2 Int: Addtional integer type, has the same size as the current platform's native word size:
+
