@@ -7,8 +7,8 @@
 //  section 1 -  Create a landmark model - start
 
 import Foundation
-import SwiftUI
-import CoreLocation
+import SwiftUI //Image
+import CoreLocation //CLLocationCoordinate2D
 
 struct Landmark: Hashable, Codable {
     var id: Int
@@ -23,16 +23,14 @@ struct Landmark: Hashable, Codable {
     }
     
     private var coordinates: Coordinates
+    struct Coordinates: Hashable,Codable{
+        var latitude: Double
+        var longitude: Double
+    }
     var locationCoordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(
             latitude: coordinates.latitude,
             longitude: coordinates.longitude
         )
     }
-    struct Coordinates: Hashable,Codable{
-        var latitude: Double
-        var longitude: Double
-    }
-    
-    
 }
