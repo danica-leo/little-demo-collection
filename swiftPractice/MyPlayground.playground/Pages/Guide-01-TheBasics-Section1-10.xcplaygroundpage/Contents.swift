@@ -66,4 +66,19 @@ let minValue = UInt8.min
 let maxValue = UInt8.max
 
 // 7.2 Int: Addtional integer type, has the same size as the current platform's native word size:
+// 7.3 UInt：Addtional unsigned integer type, use it only when you specifically need. even when the values to be stored are known to be nonnegative
+
+/** 9 Floating-Point Numbers :  Double( 64 bit ) , Float( 32 bit )
+    Double: at least 15 decimal digits, whereas the precision of Float can be as little as 6 decimal digits.
+    In situation where either type would be appropriate , Double is preferred.
+*/
+
+/**
+   10 Type Safety and Type Inference
+Swift always choose Double (rather than Float) when inferring the type of  floating-point numbers
+Swift always infers that a constant, which appears as a number resebling an integer, is an Int.
+ */
+let meaningOfLife = 42
+let pi2 = 3.14159
+let anotherPi = 3 + 0.14159
 
