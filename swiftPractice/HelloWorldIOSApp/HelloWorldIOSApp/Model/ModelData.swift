@@ -7,7 +7,6 @@
 
 import Foundation
 
-//TODO，怎么打断点调试到这里的步骤？
 var landmarks:[Landmark] = load("landmarkData.json")
 
 func load<T:Decodable>(_ filename:String)->T{
