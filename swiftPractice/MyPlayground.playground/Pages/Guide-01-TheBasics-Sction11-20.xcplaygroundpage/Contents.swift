@@ -106,3 +106,40 @@ let http200Status = (statusCode:200, description: "OK")
 
 print("code: \(http200Status.0),message:  \(http200Status.1)")
 print("code: \(http200Status.statusCode),message:  \(http200Status.description)")
+
+/**
+ 18      Optionals
+ */
+let possibleNumber = "123"
+let convertedNumber = Int(possibleNumber)
+
+/*
+ 18.1     nil
+ */
+var serserResponseCode: Int? = 404
+serserResponseCode = nil
+
+var surveyAnswer: String?
+
+if convertedNumber != nil {
+    print("ConvertedNumber contains some integer value.")
+}
+
+/*
+ 18.2 Optional Binding
+ */
+if let actualNumber = Int(possibleNumber){
+    print("The string \"\(possibleNumber)\" has an integer value of \(actualNumber)")
+}else{
+    print("The string \"\(possibleNumber)\" couldn't be converted to an integer.")
+}
+
+let myNumber = Int(possibleNumber)
+if let myNumber = myNumber {
+    print("My number is \(myNumber)")
+}
+
+if let myNumber {
+    // shorter spelling
+    print("My number is \(myNumber)")
+}
