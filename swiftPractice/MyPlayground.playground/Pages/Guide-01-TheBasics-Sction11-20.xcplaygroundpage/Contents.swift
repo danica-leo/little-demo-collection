@@ -167,5 +167,9 @@ print(greeting)
   18.4 Force Unwrapping
  */
 let possibleNumber2 = "123"
-let convertedNumber2 = Int(possibleNumber)
+let convertedNumber2 = Int(possibleNumber2)
 
+//let number2 = convertedNumber2!
+guard let number2 = convertedNumber2 else {
+    fatalError("The number was invalid")
+}
