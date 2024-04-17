@@ -90,7 +90,7 @@ if i == 1 {
 }
 
 
-/**
+/*
  17     Tuples
  */
 let http404Error = (404, "Not Found")
@@ -107,13 +107,13 @@ let http200Status = (statusCode:200, description: "OK")
 print("code: \(http200Status.0),message:  \(http200Status.1)")
 print("code: \(http200Status.statusCode),message:  \(http200Status.description)")
 
-/**
+/*
  18      Optionals
  */
 let possibleNumber = "123"
 let convertedNumber = Int(possibleNumber)
 
-/*
+/**
  18.1     nil
  */
 var serserResponseCode: Int? = 404
@@ -125,7 +125,7 @@ if convertedNumber != nil {
     print("ConvertedNumber contains some integer value.")
 }
 
-/*
+/**
  18.2 Optional Binding
  */
 if let actualNumber = Int(possibleNumber){
@@ -143,3 +143,29 @@ if let myNumber {
     // shorter spelling
     print("My number is \(myNumber)")
 }
+
+if let firstNumber = Int("4"),let secondNumber = Int("42"), firstNumber < secondNumber && secondNumber < 100 {
+    print("\(firstNumber) < \(secondNumber) < 100")
+}
+
+if let firstNumber = Int("4"){
+    if let secondNumber = Int("42"){
+        if firstNumber < secondNumber && secondNumber < 100{
+            print("\(firstNumber) < \(secondNumber) < 100")
+        }
+    }
+}
+
+/**
+  18.3  Prividing a Fallback Value
+ */
+let name: String? = nil
+let greeting = "Hello, " + (name ?? "friend") + "!"
+print(greeting)
+
+/**
+  18.4 Force Unwrapping
+ */
+let possibleNumber2 = "123"
+let convertedNumber2 = Int(possibleNumber)
+
