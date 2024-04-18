@@ -173,3 +173,48 @@ let convertedNumber2 = Int(possibleNumber2)
 guard let number2 = convertedNumber2 else {
     fatalError("The number was invalid")
 }
+
+/**
+  18.5 Implicitly Unwrapped Optionals
+ */
+
+let possibleString:String? = "An optional string."
+let forcedString:String = possibleString!
+
+let assumedString:String! = "An implicitly unwrapped optional string"
+let implicitString:String = assumedString
+let optionalString = assumedString
+
+if assumedString != nil {
+    print(assumedString!)
+}
+if let definiteString = assumedString {
+    print(definiteString)
+}
+
+/*
+ 19 Error Handling
+ */
+func canThrowAnError() throws{
+    //~
+}
+
+do{
+    try canThrowAnError()
+}catch{
+    //~
+}
+
+// TODO: 自己补充完这个例子
+//
+//func makeASandwich() throws {
+//    // ...
+//}
+//do {
+//    try makeASandwich()
+//    eatASandwich()
+//} catch SandwichError.outOfCleanDishes{
+//    washDishes()
+//} catch SandwichError.massingIngredients(let ingredients){
+//    buyGroceries(ingredients)
+//}
