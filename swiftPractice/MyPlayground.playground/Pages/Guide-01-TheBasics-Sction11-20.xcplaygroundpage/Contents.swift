@@ -218,3 +218,28 @@ do{
 //} catch SandwichError.massingIngredients(let ingredients){
 //    buyGroceries(ingredients)
 //}
+
+/*
+ 20 Assertions and Preconditions
+ */
+
+/**
+  20.1 Debugging with Assertions
+  */
+let age = 10
+// assert(age>=0,"A person's age cannot be less than zero")
+// assert(age>=0)
+
+if age > 10 {
+  print("You can ride the roller-coaster or the ferris wheel.")
+} else if age >= 0 {
+  print("You can ride the ferris wheel.")
+} else {
+  assertionFailure("A person's age can't be less than zero.")
+}
+
+/**
+  20.2 Enforcing Preconditions
+  */
+let index = 10
+precondition(index > 0, "Index must be greater than zero.")
