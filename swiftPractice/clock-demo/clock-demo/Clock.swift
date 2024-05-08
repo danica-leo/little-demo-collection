@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+#if os(iOS)
+import UIKit
+#endif
 
 struct Clock: View {
     @State private var currentTime = Date()
     @State private var recoredTime:Date?
-    @State private var timerSeconds = 25 * 60
+    @State private var timerSeconds = 10
     @State private var timer:Timer?
     
     var startTime = Date()
@@ -26,10 +29,19 @@ struct Clock: View {
                 }
                 .padding()
             
-            Button("开始"){
-                handleStartTimer()
+            if timerSeconds > 0 {
+                Button("开始"){
+                    handleStartTimer()
+                }
+                .padding()
+            }else{
+                Button("重置"){
+                    timerSeconds = 10
+                }
+                .padding()
             }
-            .padding()
+            
+            
             
             Text(timerFormatted(self.timerSeconds))
             
@@ -59,8 +71,18 @@ struct Clock: View {
                 self.timerSeconds -= 1
             } else {
                 self.timer?.invalidate()
+        
+                self.ended()
             }
         }
+    }
+    func ended(){
+        #if os(iOS)
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+        #elseif os(macOS)
+        print("ringringring")
+        #endif
     }
 }
 
