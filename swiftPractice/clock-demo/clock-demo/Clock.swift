@@ -19,15 +19,14 @@ struct Clock: View {
     var startTime = Date()
     
     var body: some View {
-        let timer = Timer.publish(every:1 , on: .main, in: .common).autoconnect()
+        var clockTimer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
       
-        
         return VStack{
             Text(currentTimeFormatted(self.currentTime))
-                .onReceive(timer) { _ in
+                .padding()
+                .onReceive(clockTimer){_ in
                     self.currentTime = Date()
                 }
-                .padding()
             
             if timerSeconds > 0 {
                 Button("开始"){
@@ -50,7 +49,6 @@ struct Clock: View {
             }
         }
        
-        
     }
     
     func currentTimeFormatted(_ time:Date) -> String {
@@ -71,12 +69,11 @@ struct Clock: View {
                 self.timerSeconds -= 1
             } else {
                 self.timer?.invalidate()
-        
-                self.ended()
+                self.endedVariable()
             }
         }
     }
-    func ended(){
+    func endedVariable(){
         #if os(iOS)
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
