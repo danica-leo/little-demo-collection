@@ -37,3 +37,35 @@ This string starts with a line break.
 It also ends with a line break.
 
 """
+
+let linesWithIndentation = """
+    This line doesn't begin with whitespace.
+        This line begins with four spaces.
+    This line dosen't begin with whitespaces.
+    """
+
+/**
+ 2.2 Special Characters in String Literals
+ */
+
+let wiseWords = "\"Imageination is more important than knowledege\" - Einstein"
+let dollarSign = "\u{24}"
+let blackHeart = "\u{2665}"
+let sparklingHeart = "\u{1F496}"
+
+let threeDoubleQuotationMarks = """
+Escaping none ""
+Escaping the first \"""
+Escaping all three quotation marks \"\"\"
+"""
+
+/**
+ 2.3 Extended String Delimiters
+ */
+let test2dot3_01 = "Line 1\nLine 2"
+let test2dot3_02 = #"Line 1\nLine 2"#
+let test2dot3_03 = #"Line 1\#nLine 2"#
+let test2dot3_04 = ###"Line 1\##nLine 3"###
+let threeMoreDoubleQuotationMarks = #"""
+Here are three more double quotes: """
+"""#
