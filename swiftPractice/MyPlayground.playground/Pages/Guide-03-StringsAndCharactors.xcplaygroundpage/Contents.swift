@@ -69,3 +69,23 @@ let test2dot3_04 = ###"Line 1\##nLine 3"###
 let threeMoreDoubleQuotationMarks = #"""
 Here are three more double quotes: """
 """#
+
+/*
+ 3 Initializing an Empty String
+ */
+
+var emptyString = ""
+var anotherEmptyString = String()
+
+if emptyString.isEmpty{
+    print("Nothing to see here")
+}
+
+/*
+ 4 String Mutability
+ */
+var variableString = "horse"
+variableString += "and carriage"
+
+let constantString = "Hignlander"
+//constantString += " and another Highlander"
