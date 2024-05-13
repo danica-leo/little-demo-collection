@@ -89,3 +89,23 @@ variableString += "and carriage"
 
 let constantString = "Hignlander"
 //constantString += " and another Highlander"
+
+/*
+ 5  Strings Are Value Types
+ If you create a new String value, that String value is copied when it's passed to a function or method, or when it's assigned to a consatnt or variable.
+ In each case , a new copy of the existing String value is created, and the new copy is passed or assigned, not the original version.
+ Value types are described in Structures and Enumerations Are Value Types.
+ */
+
+/*
+ 6 Working with Characters
+ */
+for character in "Dog!🐶"{
+    print(character)
+}
+
+let exclamtionMark: Character = "!"
+
+let catCharacters:[Character] = ["C","a","t","!","🐱"]
+let catString = String(catCharacters)
+print(catString)
