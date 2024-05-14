@@ -109,3 +109,18 @@ let exclamtionMark: Character = "!"
 let catCharacters:[Character] = ["C","a","t","!","🐱"]
 let catString = String(catCharacters)
 print(catString)
+
+/*
+ 7 Concatenating Strings and Characters
+ */
+let str1 = "hello"
+let str2 = " there"
+var welcome = str1 + str2
+
+var instruction = "look over"
+instruction += str2
+
+let exclaimationMark: Character = "!"
+welcome.append(exclaimationMark) // why here is white
+
+ 
