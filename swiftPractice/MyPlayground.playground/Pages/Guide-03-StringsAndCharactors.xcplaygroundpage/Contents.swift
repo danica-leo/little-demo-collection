@@ -121,6 +121,25 @@ var instruction = "look over"
 instruction += str2
 
 let exclaimationMark: Character = "!"
-welcome.append(exclaimationMark) // why here is white
+welcome.append(exclaimationMark) // why here is white，next day it is not white
 
- 
+let badStart = """
+    1
+    2
+    """
+let end = """
+    3
+    """
+print(badStart+end)
+
+let goodStart = """
+    1
+    2
+
+    """
+print(goodStart+end)
+
+/*
+ 8 String Interpolation
+ */
+
