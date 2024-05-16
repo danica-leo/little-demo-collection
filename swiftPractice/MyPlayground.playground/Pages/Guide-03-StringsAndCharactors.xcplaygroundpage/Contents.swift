@@ -125,7 +125,7 @@ welcome.append(exclaimationMark) // why here is white，next day it is not white
 
 let badStart = """
     1
-    2
+    2w
     """
 let end = """
     3
@@ -143,3 +143,5 @@ print(goodStart+end)
  8 String Interpolation
  */
 
+let multiplier = 3
+let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
