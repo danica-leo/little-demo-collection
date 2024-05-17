@@ -1,14 +1,14 @@
 //
-//  clock_demo_2App.swift
-//  clock-demo-2
+//  testwatchApp.swift
+//  testwatch Watch App
 //
-//  Created by leonine on 2024/5/9.
+//  Created by leonine on 2024/5/16.
 //
 
 import SwiftUI
 
 @main
-struct clock_demo_2App: App {
+struct testwatch_Watch_AppApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

@@ -145,3 +145,25 @@ print(goodStart+end)
 
 let multiplier = 3
 let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
+
+print(#"Write an interpolated string in Swift using \(multiplier)."#)
+
+print(#"6 times 7 is \#( 6 * 7 )"#)
+
+/*
+ 9 Unicode
+ */
+
+/**
+ 9.1 Unicode Scalar Values
+ why do they have a name?
+ */
+
+/**
+ 9.2 Extended Grapheme Clusters
+ */
+let eAcute:Character = "\u{E9}"
+let combinedEAcute:Character = "\u{65}\u{301}"
+
+let precomposed: Character = "\u{D55C}"
+let decomposed:Character = "\u{1112}\u{1161}\u{11AB}"
