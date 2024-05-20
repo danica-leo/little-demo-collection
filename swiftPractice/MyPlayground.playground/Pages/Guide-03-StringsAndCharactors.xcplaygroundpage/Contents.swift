@@ -194,7 +194,30 @@ print("the number of characters in \(word) is \(word.count)")
 /**
     11.1    String indices
  */
+let greeting = "Guten Tag!"
+greeting[greeting.startIndex]
+greeting[greeting.index(before: greeting.endIndex)]
+greeting[greeting.index(after: greeting.startIndex)]
+
+let index = greeting.index(greeting.startIndex, offsetBy: 7)
+greeting[index]
+
+//greeting[greeting.endIndex]
+
+for index in greeting.indices {
+    print("\(greeting[index]) ",terminator: "")
+}
 
 /**
     11.2    Inserting and Removing
  */
+
+var welcome112 = "hello"
+welcome112.insert("!", at: welcome112.endIndex)
+
+welcome112.insert(contentsOf:" there",at: welcome112.index(before:welcome112.endIndex))
+
+
+welcome112.remove(at: welcome.index(before: welcome.endIndex))
+let range = welcome.index(welcome.endIndex,offsetBy: -6) ..< welcome.endIndex
+welcome.removeSubrange(range)
