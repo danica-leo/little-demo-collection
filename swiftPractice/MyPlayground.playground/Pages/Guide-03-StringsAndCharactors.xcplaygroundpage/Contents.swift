@@ -167,3 +167,34 @@ let combinedEAcute:Character = "\u{65}\u{301}"
 
 let precomposed: Character = "\u{D55C}"
 let decomposed:Character = "\u{1112}\u{1161}\u{11AB}"
+
+let enclosedEAcute: Character = "\u{E9}\u{20DD}"
+
+let regionalIndicatorForUS: Character = "\u{1F1FA}\u{1F1F8}"
+let regionalIndicatorForUS1: Character = "\u{1F1FA}"
+let regionalIndicatorForUS2: Character = "\u{1F1F8}"
+
+/*
+ 10 Counting Characters
+ */
+let unusualMenagerie = "Koala 🐨, Snail 🐌, Penguin 🐧, Dromedary 🐪"
+print("unusualMenagerie has \(unusualMenagerie.count) characters")
+
+var word = "cafe"
+print("the number of characters in \(word) is \(word.count)")
+
+word += "\u{301}"
+print("the number of characters in \(word) is \(word.count)")
+
+
+/*
+ 11 Accessing and Modifying a String
+ */
+
+/**
+    11.1    String indices
+ */
+
+/**
+    11.2    Inserting and Removing
+ */
