@@ -221,3 +221,13 @@ welcome112.insert(contentsOf:" there",at: welcome112.index(before:welcome112.end
 welcome112.remove(at: welcome.index(before: welcome.endIndex))
 let range = welcome.index(welcome.endIndex,offsetBy: -6) ..< welcome.endIndex
 welcome.removeSubrange(range)
+
+/*
+ 12 Substring
+ */
+
+let greeting12 = "Hello, world!"
+let index12 = greeting12.firstIndex(of:",") ?? greeting12.endIndex
+let beginning = greeting12[..<index]
+
+let newString = String(beginning)
