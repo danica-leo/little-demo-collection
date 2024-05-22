@@ -293,3 +293,37 @@ for scene in romeoAndJuliet {
     }
 }
 print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
+
+/*
+ 14 Unicode Representations of Strings
+ */
+
+let dogString = "Dog‼🐶"
+
+/**
+ 14.1 UTF-8 Representation
+ */
+for codeUnit in dogString.utf8 {
+    print("\(codeUnit)",terminator:"")
+}
+print("")
+
+/**
+ 14.2 UTF-16 Representation
+ */
+for codeUnit in dogString.utf16{
+    print("\(codeUnit)",terminator:"")
+}
+print("")
+
+/**
+  14.3 Unicode Scalar Representation
+ */
+for scalar in dogString.unicodeScalars {
+    print("\(scalar.value) ", terminator: "")
+}
+print("")
+
+for scalar in dogString.unicodeScalars {
+    print("\(scalar) ")
+}
