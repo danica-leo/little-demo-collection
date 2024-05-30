@@ -65,3 +65,39 @@ shoppingList[4...6] = ["Bananas","Apples"]
 print(shoppingList)
 
 shoppingList.insert("Maple Syrup", at:0)
+
+let mapleSyrup = shoppingList.remove(at: 0)
+
+firstItem = shoppingList[0]
+
+let apples = shoppingList.removeLast()
+
+/**
+ 3.7 lterating Over an Array
+ */
+
+for item in shoppingList {
+    print(item)
+}
+
+for (index,value) in shoppingList.enumerated(){
+    print("Item \(index + 1): \(value)")
+}
+
+/*
+ 4 Sets
+ */
+
+/*
+ 4.1 Hash Values for Set Types
+ */
+
+/*
+ 4.2 Set Type Syntax
+ */
+
+/*
+ 4.3 Creating and Initializing an Empty Set
+ */
+var letters = Set<Character>()
+print("letters is of type Set<Character> with \(letters.count) items")
