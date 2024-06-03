@@ -137,3 +137,27 @@ if favoriteGenres.contains("Funk") {
 } else {
     print("It's too funky in here.")
 }
+
+/**
+ 4.6 Iterating Over a Set
+ */
+for genre in favoriteGenres {
+    print(genre)
+}
+
+for genre in favoriteGenres.sorted() {
+    print(genre)
+}
+
+/*
+ 5 Performing Set Operations
+ */
+
+/**
+ 5.1 Fundamental Set Operations
+ */
+let oddDigits: Set = [1,3,5,7,9]
+let evenDigits: Set = [0,2,4,6,8]
+let singleDigitPrimeNumbers: Set = [2,3,5,7]
+
+oddDigits.union(evenDigits).sorted()
