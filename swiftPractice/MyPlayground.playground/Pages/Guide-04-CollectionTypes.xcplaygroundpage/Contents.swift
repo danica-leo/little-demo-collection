@@ -168,4 +168,29 @@ oddDigits.symmetricDifference(singleDigitPrimeNumbers).sorted()
 /**
  5.2 Set Memebership and Equality
  */
+let houseAnimals:Set = ["🐶", "🐱"]
+let farmAnimals:Set = ["🐮", "🐔", "🐑", "🐶", "🐱"]
+let cityAnimals:Set =  ["🐦", "🐭"]
 
+houseAnimals.isSubset(of: farmAnimals)
+farmAnimals.isSuperset(of: houseAnimals)
+farmAnimals.isDisjoint(with: cityAnimals)
+
+/*
+ 6 Dictionaries
+ */
+
+/**
+ 6.1 Dictionary Type Shorthand Syntax
+ */
+
+/**
+ 6.2 Creating an Empty Dictionary
+ */
+var namesOfIntegers: [Int:String] = [:]
+namesOfIntegers[16] = "sixteen"
+namesOfIntegers = [:]
+
+/**
+ 6.3 Creating a Dictionary with a Dictionary Literal
+ */
