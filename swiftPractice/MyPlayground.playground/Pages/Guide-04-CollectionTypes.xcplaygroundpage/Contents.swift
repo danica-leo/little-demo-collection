@@ -194,3 +194,15 @@ namesOfIntegers = [:]
 /**
  6.3 Creating a Dictionary with a Dictionary Literal
  */
+var airports:[String:String] = ["YYZ":"Toronto Person","DUB":"Dublin"]
+
+/**
+ 6.4 Accessing and Modifying a Dictionary
+ */
+print("The airports dictionary contains \(airports.count) items.")
+
+if airports.isEmpty {
+    print("The airports dictionary is empty.")
+}else {
+    print("The airports dictionary isn't empty.")
+}
