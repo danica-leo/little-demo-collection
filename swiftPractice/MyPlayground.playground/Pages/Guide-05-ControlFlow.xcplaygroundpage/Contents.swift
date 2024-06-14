@@ -15,6 +15,10 @@ for (animalName,legCount) in  numberOfLegs {
     print("\(animalName)s have \(legCount) legs")
 }
 
+for index in 1...5 {
+    print("\(index) times 5 is \(index * 5)")
+}
+
 /*
  3?
  */
