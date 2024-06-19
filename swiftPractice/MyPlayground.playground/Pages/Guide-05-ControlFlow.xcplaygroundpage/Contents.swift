@@ -65,3 +65,6 @@ for tickMark in stride(from:3, through: hours, by:hourInterval){
 /*
  3.1 While
  */
+//3.1.1哇这个蛇的游戏规则看不懂啊，算了先直接敲demo吧
+let finalSqure = 25
+var board = [Int](repeating:0, count:finalSqure + 1)
