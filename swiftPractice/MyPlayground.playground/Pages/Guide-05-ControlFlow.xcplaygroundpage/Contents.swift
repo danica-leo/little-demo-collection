@@ -68,3 +68,6 @@ for tickMark in stride(from:3, through: hours, by:hourInterval){
 //3.1.1哇这个蛇的游戏规则看不懂啊，算了先直接敲demo吧
 let finalSqure = 25
 var board = [Int](repeating:0, count:finalSqure + 1)
+
+board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02
+board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08
