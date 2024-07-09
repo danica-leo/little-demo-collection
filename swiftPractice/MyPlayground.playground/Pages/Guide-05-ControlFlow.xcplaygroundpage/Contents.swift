@@ -65,6 +65,7 @@ for tickMark in stride(from:3, through: hours, by:hourInterval){
 /*
  3.1 While
  */
+
 //3.1.1哇这个蛇的游戏规则看不懂啊，算了先直接敲demo吧
 let finalSqure = 25
 var board = [Int](repeating:0, count:finalSqure + 1)
@@ -87,3 +88,23 @@ while square < finalSqure {
     print("square",square)
 }
 print("Game over!")
+
+/*
+ 3.1.2 Repeat-While
+ */
+square = 0
+diceRoll = 0
+repeat {
+    square += board[square]
+    diceRoll += 1
+    if diceRoll == 7 { diceRoll = 1 }
+    square += diceRoll
+} while square < finalSqure
+print("Game over!")
+// 看起来repeat while 比while少了一条判断语句
+
+//自己复习一下上面两个demo
+let finalSqure2 = 25
+var board2 = [Int](repeating:0,count:finalSqure2)
+board2[03] = +08; board2[06] = +11; board2[09] = +09; board2[10] = +02;
+print(board2)
