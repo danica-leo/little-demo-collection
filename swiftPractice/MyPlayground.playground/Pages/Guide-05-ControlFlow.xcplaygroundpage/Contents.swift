@@ -62,9 +62,9 @@ for tickMark in stride(from:3, through: hours, by:hourInterval){
  3 While Loops
  */
 
-/*
- 3.1 While
- */
+
+// 3.1 While
+
 
 //3.1.1哇这个蛇的游戏规则看不懂啊，算了先直接敲demo吧
 let finalSqure = 25
@@ -89,9 +89,9 @@ while square < finalSqure {
 }
 print("Game over!")
 
-/*
- 3.1.2 Repeat-While
- */
+
+// 3.1.2 Repeat-While
+
 square = 0
 diceRoll = 0
 repeat {
@@ -104,7 +104,46 @@ print("Game over!")
 // 看起来repeat while 比while少了一条判断语句
 
 //自己复习一下上面两个demo
-let finalSqure2 = 25
-var board2 = [Int](repeating:0,count:finalSqure2)
-board2[03] = +08; board2[06] = +11; board2[09] = +09; board2[10] = +02;
-print(board2)
+let finalSquare2 = 25
+// int数组初始化的语法
+var board2 = [Int](repeating: 0, count: finalSquare2)
+
+board2[03] = +08; board2[06] = +11; board2[09] = +9; board2[10] = +2;
+board2[14] = -10; board2[19] = -11; board2[22] = -2; board2[24] = -8;
+
+var curSquare = 0
+var diceRoll2 = 0 //初始化时从0开始，在代码首次的时候自动对其可取值的1，超边界情况可以灵活应对
+while curSquare < finalSquare2 {
+    diceRoll2 += 1
+    if diceRoll2 == 7 {
+        diceRoll2 = 1
+    }
+    
+    curSquare += diceRoll
+    if curSquare < board2.count{
+        print(" board2.count == finalSquare2 ", board2.count == finalSquare2)
+        curSquare += board2[curSquare]
+    }
+    print("squre",curSquare)
+}
+print("Game over!")
+
+curSquare = 0
+diceRoll2 = 0
+repeat{
+   //头一次写的时候没写出来,TODO 有机会可以再练一遍
+    square += board[square]
+    diceRoll2 += 1
+    if diceRoll2 == 7 { diceRoll = 1 }
+    square += diceRoll2
+}while curSquare < finalSquare2
+print("Game over!")
+
+
+/*
+ 4 Condition Statements
+ */
+
+
+// 4.1 If
+
