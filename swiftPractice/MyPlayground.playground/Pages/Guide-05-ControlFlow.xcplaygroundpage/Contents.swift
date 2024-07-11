@@ -156,7 +156,7 @@ if temperatureInFahrenheit <= 32 {
 }
 
 
-
+// 4.1.2 shorthand spelling of setting values
 let temperatureInCelsius = 25
 let weatherAdvice:String
 
@@ -177,3 +177,33 @@ let weatherAdvice2 = if temperatureInCelsius <= 0 {
     "It's not that cold. Wear a T-shirt."
 }
 print(weatherAdvice2)
+
+
+// 4.1.3 Explicit type
+let freezeWarning:String?  = if temperatureInCelsius <= 0 {
+    "It's below freezing. Watch for ice!"
+} else {
+    nil
+}
+
+let freezeWarning2 = if temperatureInCelsius <= 0 {
+    "It's below freezing. Watch for ice!"
+} else {
+    nil as String?
+}
+
+
+enum TemperatureError:Error {
+    case boiling
+}
+let weatherAdvice3 = if temperatureInCelsius > 100 {
+    throw TemperatureError.boiling
+} else {
+    "It's a reasonable temperature"
+}
+
+// 4.2 Switch
+
+// 4.2.1 basic switch
+let someCharacter:Character = "z"
+
