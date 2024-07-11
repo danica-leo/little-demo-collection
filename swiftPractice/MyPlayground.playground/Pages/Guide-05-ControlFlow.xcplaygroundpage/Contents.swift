@@ -119,7 +119,7 @@ while curSquare < finalSquare2 {
         diceRoll2 = 1
     }
     
-    curSquare += diceRoll
+    curSquare += diceRoll2
     if curSquare < board2.count{
         print(" board2.count == finalSquare2 ", board2.count == finalSquare2)
         curSquare += board2[curSquare]
@@ -132,10 +132,10 @@ curSquare = 0
 diceRoll2 = 0
 repeat{
    //头一次写的时候没写出来,TODO 有机会可以再练一遍
-    square += board[square]
+    curSquare += board2[curSquare]
     diceRoll2 += 1
-    if diceRoll2 == 7 { diceRoll = 1 }
-    square += diceRoll2
+    if diceRoll2 == 7 { diceRoll2 = 1 }
+    curSquare += diceRoll2
 }while curSquare < finalSquare2
 print("Game over!")
 
@@ -146,4 +146,34 @@ print("Game over!")
 
 
 // 4.1 If
+var temperatureInFahrenheit = 90  //30
+if temperatureInFahrenheit <= 32 {
+    print("It's very cold , Consider wearing a scarf.")
+} else if temperatureInFahrenheit >= 86 {
+    print("It's really warm. Don't forget to wear sunscreen")
+} else {
+    print("It's not that cold, Wear a T-shirt.")
+}
 
+
+
+let temperatureInCelsius = 25
+let weatherAdvice:String
+
+if temperatureInCelsius <= 0 {
+    weatherAdvice = "It's very cold, Consider wearing a scarf"
+} else if temperatureInCelsius >= 30 {
+    weatherAdvice = "It's really warm , Don't forget to wear sunscreen."
+} else {
+    weatherAdvice = "It's not that cold, Wear a T-shirt"
+}
+print(weatherAdvice)
+
+let weatherAdvice2 = if temperatureInCelsius <= 0 {
+    "It's very cold, Consider wearing a scarf."
+} else if temperatureInCelsius >= 30 {
+    "It's really warm, Don't forget to wear sunscreen."
+} else {
+    "It's not that cold. Wear a T-shirt."
+}
+print(weatherAdvice2)
