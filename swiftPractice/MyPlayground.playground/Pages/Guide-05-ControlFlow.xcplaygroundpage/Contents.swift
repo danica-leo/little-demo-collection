@@ -206,4 +206,36 @@ let weatherAdvice3 = if temperatureInCelsius > 100 {
 
 // 4.2.1 basic switch
 let someCharacter:Character = "z"
+switch someCharacter{
+case "a":
+    print("The first letter of latin alphabet")
+case "z":
+    print("The last letter of latin alphabet")
+default:
+    print("Some other character")
+}
+
+// 4.2.2 expression form
+let anotherCharacter = "a"
+let message = switch anotherCharacter {
+case "a":
+    "The first letter of the Latin alphabet"
+case "z":
+    "The last letter of the Latin alphabet"
+default:
+    "Some other character"
+}
+print("message")
+
+// 4.2.3 No Implicit Fallthrough
+switch anotherCharacter {
+case "a","A":
+    print("The letter A")
+default:
+    print("Other characters")
+}
+
+// 4.2.4 Interval Matching
+let approximateCount = 62
+let countedThings = "moons orbiting Saturn"
 
