@@ -238,4 +238,35 @@ default:
 // 4.2.4 Interval Matching
 let approximateCount = 62
 let countedThings = "moons orbiting Saturn"
+let naturalCount:String
+switch approximateCount {
+case 0:
+    naturalCount = "No"
+case ..<5:
+    naturalCount = "a few"
+case 5..<12:
+naturalCount = "several"
+case 12..<100:
+    naturalCount = "dozens of"
+case 100..<1000:
+    naturalCount = "hundreds of"
+default:
+    naturalCount = "many"
+}
+print("There are \(naturalCount) \(countedThings).")
 
+
+// 4.2.5 Tuples
+let somePoint = (1,1)
+switch somePoint {
+case (0,0):
+    print("\(somePoint) is at the origin")
+case (_,0):
+    print("\(somePoint) is on the X-axis")
+case (0,_):
+    print("\(somePoint) is on the Y-axis")
+case (-2...2,-2...2):
+    print("\(somePoint) is inside the box")
+default:
+    print("\(somePoint) is out of the box")
+}
