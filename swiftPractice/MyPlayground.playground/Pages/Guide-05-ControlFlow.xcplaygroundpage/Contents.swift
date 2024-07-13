@@ -270,3 +270,28 @@ case (-2...2,-2...2):
 default:
     print("\(somePoint) is out of the box")
 }
+
+// 4.2.6  Value Bindings
+let anotherPoint = (2,0)
+switch anotherPoint {
+case (let x,0):
+    print("on the x-axis with an x value of \(x)")
+case (0,let y):
+    print("on the y-axis with an y value of \(y)")
+case let (x,y):
+    print("somewhere else at (\(x),\(y))")
+    //在最后case语句可以匹配所有情况时，可以不写default语句。
+}
+
+// 4.2.7 Where
+
+let yetAnotherPoint = (1,-1)
+switch yetAnotherPoint {
+case let(x,y) where x == y:
+    print("(\(x),\(y) is on the line x == y")
+case let(x,y) where x == -y:
+    print("(\(x),\(y) is on the line x == -y.")
+case let(x,y):
+    print("(\(x),\(y) is just some arbitrary")
+}
+
