@@ -295,3 +295,41 @@ case let(x,y):
     print("(\(x),\(y) is just some arbitrary")
 }
 
+// 4.2.8 Compound Cases
+let someCharacter428 :Character = "e"
+switch someCharacter428 {
+case "a","e","i","o","u":
+    print("\(someCharacter428) is a vowel")
+case "b", "c", "d", "f", "g", "h", "j", "k", "l", "m",
+    "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z":
+    print("\(someCharacter428) is a consonat")
+default:
+    print("\(someCharacter428) isn't a vowel or a consonat")
+}
+
+// 4.2.9 Compound Cases with value binding
+let stillAnotherPoint = (9,0)
+switch stillAnotherPoint {
+case (let distance,0),(0,let distance):
+    print("On an axis, \(distance) from the origin")
+default:
+    print("Not on an axis")
+}
+
+/*
+ 5 Control Transfer Statements
+ */
+
+// 5.1 Continue
+let puzzleInput = "Great minds think alike"
+var puzzleOutput = ""
+let characterToRemove:[Character] = ["a","e","u","i","o"," "]
+for char in puzzleInput {
+    if characterToRemove.contains(char){
+        continue
+    }
+    puzzleOutput.append(char)
+}
+
+// 5.2 Break
+
