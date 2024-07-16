@@ -332,4 +332,23 @@ for char in puzzleInput {
 }
 
 // 5.2 Break
+let numberSymbol:Character = "三"
+var possibleIntegerValue:Int?
+switch numberSymbol{
+case "1","一":
+    possibleIntegerValue = 1
+case "2","二":
+    possibleIntegerValue = 1
+case "3","三":
+    possibleIntegerValue = 1
+case "4","四":
+    possibleIntegerValue = 1
+default:
+    break
+}
 
+if let integerValue = possibleIntegerValue {
+    print("The integer value of \(numberSymbol) is \(integerValue)")
+} else {
+    print("An integer value couldn't be found for \(numberSymbol)")
+}
