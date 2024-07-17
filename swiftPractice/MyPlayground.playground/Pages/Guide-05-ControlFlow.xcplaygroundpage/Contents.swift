@@ -352,3 +352,14 @@ if let integerValue = possibleIntegerValue {
 } else {
     print("An integer value couldn't be found for \(numberSymbol)")
 }
+
+// 5.3 Fall Through
+let integerToDescribe = 5
+var description = "The number \(integerToDescribe) is"
+switch integerToDescribe {
+case 1,3,5,7,11,13,17,19:
+    description += " an prime, and also"
+    fallthrough
+default:
+    description += "an integer"
+}
