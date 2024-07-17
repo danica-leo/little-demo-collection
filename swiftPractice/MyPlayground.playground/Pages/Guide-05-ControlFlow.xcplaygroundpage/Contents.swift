@@ -363,3 +363,20 @@ case 1,3,5,7,11,13,17,19:
 default:
     description += "an integer"
 }
+
+// 5.4 Labeled Statements
+
+whileTest1: while true {
+    print("I will only print once")
+    break whileTest1;
+}
+
+// 5.4.1 another snakes and landers
+
+let finalSqure54 = 25
+var board54 = [Int](repeating: 0, count: finalSqure54)
+board54[03] = +08;board54[06] = +11;board54[09] = +09;board54[10] = +02;
+board54[14] = -10;board54[19] = -11;board54[22] = -02;board54[24] = -08;
+var square54 = 0
+var diceRoll54 = 0
+
