@@ -401,3 +401,71 @@ print("Game over!")
 /*
  6 Early Exit
  */
+
+func greet(person:[String:String]){
+    guard let name = person["name"] else {
+        return
+    }
+    print("Hello \(name)!")
+    
+    guard let location = person["location"] else {
+        print("I hope the weather is nice near you.")
+        return
+    }
+    print("I hope the weather is nice in \(location).")
+}
+
+greet(person: ["name":"John"])
+print("test")
+
+greet(person: ["name":"Jane","location":"Cupertino"])
+
+/*
+ 7 Deferred Actions
+ */
+
+var score = 1
+if score < 10 {
+    defer {
+        print(score)
+    }
+    score += 5
+}
+
+var score2 = 3
+if score2 < 100 {
+    score2 += 100
+    defer{
+        score2 -= 100
+    }
+    print("score2",score2)
+}
+print("score2",score2)
+
+if score < 10 {
+    defer{
+        print(score)
+    }
+    defer {
+        print("The score is:")
+    }
+    score+=5
+}
+
+/*
+ 8 Checking Api Availability
+ */
+
+
+@available(macOS 10.12, *)
+struct ColorPreference {
+    var bestColor = "blue"
+}
+
+func chooseBestColor() -> String {
+    guard #available(macOS 10.12, *) else {
+        return "gray"
+    }
+    let colors = ColorPreference()
+    return colors.bestColor
+}
