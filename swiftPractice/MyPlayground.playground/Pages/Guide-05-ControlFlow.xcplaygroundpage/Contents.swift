@@ -380,3 +380,24 @@ board54[14] = -10;board54[19] = -11;board54[22] = -02;board54[24] = -08;
 var square54 = 0
 var diceRoll54 = 0
 
+gameLoop: while(square54 != finalSqure54){
+    diceRoll54 += 1
+    if diceRoll54 == 7 {
+        diceRoll54 = 1
+    }
+    switch square54 + diceRoll54 {
+        case finalSqure54:
+            break gameLoop
+        case let newSquare where newSquare > finalSqure54:
+            continue gameLoop
+        default:
+            square54 += diceRoll54;
+            square54 += board54[square54]
+    }
+}
+
+print("Game over!")
+
+/*
+ 6 Early Exit
+ */
