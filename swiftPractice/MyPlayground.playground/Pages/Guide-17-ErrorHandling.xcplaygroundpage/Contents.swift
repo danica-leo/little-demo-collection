@@ -89,3 +89,30 @@ do {
 } catch {
     print("Unexpected error: \(error)")
 }
+
+//3.2.1
+func nourish(with item:String) throws {
+    do {
+        try vendingMachine.vend(itemNamed:item)
+    }catch is VendingMachineError {
+        print("Couldn't buy that from the vending machine.")
+    }
+}
+
+do {
+    try nourish(with: "Beet-Flavored Chips")
+}catch{
+    print("Unexpected non-vending-machine-related error:\(error)")
+}
+
+//3.2.2
+func eat(item:String) throws {
+    do {
+        try  vendingMachine.vend(itemNamed: item)
+    } catch VendingMachineError.invalidSelection,VendingMachineError.insufficientFunds,VendingMachineError.outOfStock{
+        print("Invalid selection, out of stock, or not enough money.")
+    }
+}
+
+// 3.3 Coverting Errors to Optional Values
+
