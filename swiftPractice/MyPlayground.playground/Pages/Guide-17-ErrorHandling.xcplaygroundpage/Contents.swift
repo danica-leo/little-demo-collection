@@ -115,4 +115,34 @@ func eat(item:String) throws {
 }
 
 // 3.3 Coverting Errors to Optional Values
+//func fetchData() -> Data?{
+//    if let data = try? fetchDataFromDisk() { return data }
+//    if let data = try? fetchDataFromDatabase() { return data }
+//    return nil
+//}
 
+// 3.4 Disabling Error propagation
+//let photo = try! loadImage(atPath:"./xx/xxx.jpg")
+
+/*
+ 4 Specifying the Error Type
+ */
+
+enum StatisticsError: Error {
+    case noRatings
+    case invalidRating(Int)
+}
+
+func summarize(_ ratings: [Int]) throws (StatisticsError) {
+    guard !ratings.isEmpty else { throw .noRatings }
+
+
+    var counts = [1: 0, 2: 0, 3: 0]
+    for rating in ratings {
+        guard rating > 0 && rating <= 3 else { throw .invalidRating(rating) }
+        counts[rating]! += 1
+    }
+
+
+    print("*", counts[1]!, "-- **", counts[2]!, "-- ***", counts[3]!)
+}
