@@ -126,6 +126,7 @@ func eat(item:String) throws {
 
 /*
  4 Specifying the Error Type
+ This chapter at 20240723 is still cannot use in playgroud
  */
 
 enum StatisticsError: Error {
@@ -133,16 +134,64 @@ enum StatisticsError: Error {
     case invalidRating(Int)
 }
 
-func summarize(_ ratings: [Int]) throws (StatisticsError) {
-    guard !ratings.isEmpty else { throw .noRatings }
+func summarize(_ ratings: [Int]) throws {
+    guard !ratings.isEmpty else {
+        throw StatisticsError.noRatings
+    }
 
 
     var counts = [1: 0, 2: 0, 3: 0]
     for rating in ratings {
-        guard rating > 0 && rating <= 3 else { throw .invalidRating(rating) }
+        guard rating > 0 && rating <= 3 else { throw StatisticsError.invalidRating(rating) }
         counts[rating]! += 1
     }
 
 
     print("*", counts[1]!, "-- **", counts[2]!, "-- ***", counts[3]!)
 }
+
+
+//func summarize(_ ratings: [Int]) throws(StatisticsError) {
+//    guard !ratings.isEmpty else { throw .noRatings }
+//
+//
+//    var counts = [1: 0, 2: 0, 3: 0]
+//    for rating in ratings {
+//        guard rating > 0 && rating <= 3 else { throw .invalidRating(rating) }
+//        counts[rating]! += 1
+//    }
+//
+//
+//    print("*", counts[1]!, "-- **", counts[2]!, "-- ***", counts[3]!)
+//}
+
+
+func someThrowingFunction() throws {
+    let ratings = [1, 2, 3, 2, 2, 1]
+    try summarize(ratings)
+}
+
+
+//func someThrowingFunction() -> throws {
+//    let ratings = [1, 2, 3, 2, 2, 1]
+//    try summarize(ratings)
+//}
+//
+
+//let ratings = []
+//do throws(StatisticsError) {
+//    try summarize(ratings)
+//} catch {
+//    switch error {
+//    case .noRatings:
+//        print("No ratings available")
+//    case .invalidRating(let rating):
+//        print("Invalid rating: \(rating)")
+//    }
+//}
+
+/*
+ 5 Specifying Cleanup Actions
+ */
+
+//blablabla
