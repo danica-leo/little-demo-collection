@@ -20,12 +20,12 @@ func greetAgain(person:String) -> String {
 
 print(greetAgain(person:"Danica"))
 
-/**
- 2.1 Function Parameters and Return Values
+/*
+ 3 Function Parameters and Return Values
  */
 
 /**
- 2.2 Functions With Out Parameters
+ 3.1 Functions With Out Parameters
  */
 func sayHelloWorld() -> String {
     return "Hello world!"
@@ -34,7 +34,7 @@ func sayHelloWorld() -> String {
 print(sayHelloWorld())
 
 /**
- 2.3 Functions with  multiple parameters
+ 3,2 Functions with  multiple parameters
  */
 func greet(person:String,alreadyGreeted:Bool) -> String {
     if alreadyGreeted {
@@ -48,7 +48,7 @@ print(greet(person: "David",alreadyGreeted:true))
 
 
 /**
- 2.4 Functions without return values
+ 3.3 Functions without return values
  */
 
 func greet24(person:String){
@@ -62,13 +62,38 @@ func printAndCount(str:String) -> Int {
     return str.count
 }
 
-func printWithoutCounting(str2:String) -> Int{
-    let _ = printAndCount(str:str2)
+func printWithoutCounting(str:String){
+    let _ = printAndCount(str:str)
 }
-/**
- 2.5 Functions with multiple parameters
- */
+
+printAndCount(str: "Hello, world!")
+printWithoutCounting(str: "Hello, world!")
 
 /**
- 2.6 Functions with an implicit return
+ 3.4 Functions with multiple parameters
+ */
+func minMax(array:[Int]) -> (min:Int, max:Int)?{
+    guard !array.isEmpty else {
+        return nil
+    }
+
+    var currentMin = array[0]
+    var currentMax = array[0]
+    for value in array[1..<array.count]{
+        if value < currentMin{
+            currentMin = value
+        }else if value > currentMax{
+            currentMax = value
+        }
+    }
+    return (currentMin,currentMax)
+}
+
+if let  bounds = minMax(array:[8, -6, 2, 109, 3, 71]){
+    print("min is \(bounds.min) and max is \(bounds.max)")
+
+}
+
+/**
+ 3.5 Functions with an implicit return
  */
