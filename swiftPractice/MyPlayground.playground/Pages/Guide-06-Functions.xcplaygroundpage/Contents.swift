@@ -97,3 +97,25 @@ if let  bounds = minMax(array:[8, -6, 2, 109, 3, 71]){
 /**
  3.5 Functions with an implicit return
  */
+func greeting35(for person:String)-> String {
+    "Hell, " + person + "!"
+}
+print(greeting35(for:"Dave"))
+
+/*
+ 4 Function Argument Labels and Parameter Names
+ */
+
+
+
+// 4.1 Specifying Argument Labels
+func greet41(person:String, from hometown:String) -> String {
+    return "Hello \(person)! Glad you could visit from \(hometown)."
+}
+print(greet41(person: "Bill", from:"Cupertino"))
+
+// 4.2 Omitting Argument Labels
+func sayBye(_ name:String,_ hometown:String )->String{
+    return "Goodbye! \(name)! go to \(hometown)"
+}
+print(sayBye("Glle!","TianJing"))
