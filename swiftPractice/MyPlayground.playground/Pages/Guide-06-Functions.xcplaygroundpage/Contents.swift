@@ -119,3 +119,38 @@ func sayBye(_ name:String,_ hometown:String )->String{
     return "Goodbye! \(name)! go to \(hometown)"
 }
 print(sayBye("Glle!","TianJing"))
+
+
+// 4.3 Default Parameter Values
+func saySunny(_ name:String = "Friends"){
+    print("\(name), Today is Sunny!")
+}
+
+// 4.4 Variadic Parameters
+
+func arithmeticMean(_ numbers:Double...) -> Double {
+    var total:Double = 0
+    for number in numbers {
+        total += number
+    }
+    return total / Double(numbers.count)
+}
+arithmeticMean(1,2,3,4,5)
+arithmeticMean(3,8.25,18.75)
+
+// 4.5 In-Out Parameters
+func swapTwoInts(_ a:inout Int, _ b:inout Int){
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+var someInt = 3
+var anotherInt = 107
+
+swapTwoInts(&someInt, &anotherInt)
+print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
+
+
+/*
+ 5 Function Types
+ */
