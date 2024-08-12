@@ -204,3 +204,20 @@ while currentValue != 0 {
     currentValue = moveNearerToZero(currentValue)
 }
 print("zero!")
+
+
+/*
+ 6 Nested Functions
+ */
+func chooseStepFunction6(backward:Bool) -> (Int) -> Int{
+      func stepForward(input: Int) -> Int { return input + 1 }
+      func stepBackward(input: Int) -> Int { return input - 1 }
+      return backward ? stepBackward : stepForward
+}
+
+var currentValue6 = -4
+let moveNearerToZero6 = chooseStepFunction6(backward: currentValue > 0)  
+while currentValue6 != 0 {
+      print("\(currentValue)... ")
+      currentValue = moveNearerToZero(currentValue)
+}
