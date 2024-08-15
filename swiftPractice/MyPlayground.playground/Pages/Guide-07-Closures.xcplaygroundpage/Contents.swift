@@ -41,5 +41,11 @@ reversedNames = names.sorted(by:{ s1, s2 in s1 > s2 })
 /**
   2.5 Shorthand Argument Names
 */
-Ï
+
 reversedNames = names.sorted(by:{ $0 > $1 })
+
+/**
+  2.6 Operator Methods
+*/
+
+reversedNames = names.sorted(by: >)
