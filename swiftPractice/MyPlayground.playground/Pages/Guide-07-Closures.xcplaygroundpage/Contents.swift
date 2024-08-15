@@ -24,3 +24,22 @@ var reversedNames = names.sorted(by:backward)
  */
 reversedNames = names.sorted(by:{(_ s1:String,_ s2:String) -> Bool in return s1 > s2 })
 
+
+/**
+ 2.3 Inferring Type From Context
+ */
+reversedNames = names.sorted(by:{ s1, s2 in return s1 > s2})
+
+
+/**
+  2.4 Implicit Returns from Single-Expression Closures
+*/
+
+reversedNames = names.sorted(by:{ s1, s2 in s1 > s2 })
+
+
+/**
+  2.5 Shorthand Argument Names
+*/
+Ï
+reversedNames = names.sorted(by:{ $0 > $1 })
