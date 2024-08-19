@@ -73,3 +73,38 @@ let strings = numbers.map {
     } while number > 0
     return output
 }
+
+
+func loadPicture(from server:String,completion:(String)->Void,onFailure:()->Void){
+    let success = false
+    if(success){
+        completion("success!")
+    }else{
+        onFailure()
+    }
+}
+
+loadPicture(from: "Server 1"){ picture in
+    print("Server 1 picture")
+} onFailure: {
+    print("Couldn't download the next picture")
+}
+
+
+/*
+ 4 Capturing Values
+ */
+
+func makeIncrementer(forIncrement amount:Int) -> ()->Int {
+    var runningTotal = 0
+    func incrementer() -> Int {
+        runningTotal += amount
+        return runningTotal
+    }
+    return incrementer
+}
+
+let incrementer4_1 = makeIncrementer(forIncrement: 10)
+incrementer4_1()
+incrementer4_1()
+incrementer4_1()
