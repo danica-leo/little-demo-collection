@@ -108,3 +108,24 @@ let incrementer4_1 = makeIncrementer(forIncrement: 10)
 incrementer4_1()
 incrementer4_1()
 incrementer4_1()
+
+let incrementBySeven = makeIncrementer(forIncrement: 7)
+incrementBySeven()
+incrementer4_1()
+
+/*
+  5 Closures Are Reference Types
+*/
+
+let alsoIncrementByTen = incrementer4_1
+incrementer4_1()
+incrementer4_1()
+
+/*
+  6 Escaping Closures
+*/
+
+var completionHandlers:[()->Void] = []
+func someFunctionWithEscapingClosure(completionHandler:@escaping ()->Void ){
+  completionHandlers.append(completionHandler)
+}
