@@ -129,3 +129,7 @@ var completionHandlers:[()->Void] = []
 func someFunctionWithEscapingClosure(completionHandler:@escaping ()->Void ){
   completionHandlers.append(completionHandler)
 }
+
+func someFunctionWithNonescapingClosure(closure:()->Void){
+    closure()
+}
