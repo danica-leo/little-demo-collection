@@ -129,7 +129,40 @@ var completionHandlers:[()->Void] = []
 func someFunctionWithEscapingClosure(completionHandler:@escaping ()->Void ){
   completionHandlers.append(completionHandler)
 }
-
 func someFunctionWithNonescapingClosure(closure:()->Void){
     closure()
 }
+
+class SomeClass {
+    var x = 10
+    func doSomething() {
+        someFunctionWithEscapingClosure { self.x = 200 }
+        someFunctionWithNonescapingClosure { x = 100 }
+    }
+}
+
+let someInstance = SomeClass()
+print(someInstance.x)
+
+someInstance.doSomething()
+print(someInstance.x)
+
+completionHandlers.first?()
+print(someInstance.x)
+
+class SomeOtherClass {
+    var x = 22
+    func doSomething() {
+        someFunctionWithEscapingClosure {[self] in x = 222}
+        someFunctionWithNonescapingClosure { x = 111 }
+    }
+}
+
+let someOtherInstance = SomeOtherClass()
+print(someOtherInstance.x)
+
+someOtherInstance.doSomething()
+print(someOtherInstance.x)
+
+completionHandlers[1]()
+print(someOtherInstance.x)
