@@ -166,3 +166,38 @@ print(someOtherInstance.x)
 
 completionHandlers[1]()
 print(someOtherInstance.x)
+
+/*
+ 7 AutoClosures
+ */
+var customerLines = ["Chris", "Alex", "Ewa", "Barry", "Deniella"];
+print(customerLines.count)
+
+let customerProvider = { customerLines.remove(at: 0) }
+print(customerLines.count)
+
+print("Now serving \(customerProvider())!")
+print(customerLines.count)
+
+
+func serve(customer customerProvider:() -> String){
+  print("Now serving \(customerProvider())!")
+}
+serve(customer:{ customerLines.remove(at:0)})
+print(customerLines.count)
+
+func serve2(customer customerProvider:@autoclosure () -> String) {
+  print("Now serving \(customerProvider())!")
+}
+serve2(customer: customerLines.remove(at: 0))
+
+var customerProviders:[()->String] = []
+func collectCustomerProviders(_ customerProvider:@autoclosure @escaping ()->String){
+  customerProviders.append(customerProvider)
+}
+collectCustomerProviders(customerLines.remove(at:0))
+collectCustomerProviders(customerLines.remove(at:0))
+print("Collected \(customerProviders.count) closures.")
+for customerProvider in customerProviders{
+  print("Now serving \(customerProvider())!")
+}
