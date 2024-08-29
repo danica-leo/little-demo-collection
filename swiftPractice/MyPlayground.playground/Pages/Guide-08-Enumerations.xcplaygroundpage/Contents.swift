@@ -60,3 +60,16 @@ for beverage in Beverage.allCases{
     print(beverage)
 }
 
+
+/*
+ 4 Associated Values
+ */
+enum Barcode {
+    case upc(Int,Int,Int,Int)
+    case qrCode(String)
+}
+
+var productCode = Barcode.upc(8, 85909, 51226, 3)
+print(productCode)
+
+productCode = .qrCode("Blabalbaldkjfalkdjkflas")
