@@ -73,3 +73,10 @@ var productCode = Barcode.upc(8, 85909, 51226, 3)
 print(productCode)
 
 productCode = .qrCode("Blabalbaldkjfalkdjkflas")
+
+switch productCode {
+case .upc(let numberSystem, let manufacturer,let product, let check):
+    print("UPC: \(numberSystem), \(manufacturer), \(product), \(check).")
+case .qrCode(let productCode ):
+    print("QR code: \(productCode) ")
+}
