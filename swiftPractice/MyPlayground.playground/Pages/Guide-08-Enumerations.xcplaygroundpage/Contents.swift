@@ -80,3 +80,24 @@ case .upc(let numberSystem, let manufacturer,let product, let check):
 case .qrCode(let productCode ):
     print("QR code: \(productCode) ")
 }
+
+/*
+ 5 Raw Values
+ */
+
+enum ASCIIControlCharacter:Character {
+    case tab = "\t"
+    case lineFeed = "\n"
+    case carriageReturn = "\r"
+}
+
+
+//  5.1 Implicitly Assigned Raw Values
+
+enum Planet6: Int {
+    case mercury = 1, venues, earth, mars, jupiter, saturn, uranus, neptune
+}
+
+enum CompassPoint6: String{
+    case north, south, east, west
+}
