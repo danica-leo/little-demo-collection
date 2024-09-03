@@ -25,7 +25,7 @@ module.exports = class ChunkLoggerPlugin {
       function formatSize (size) {
         return (size / 1024).toFixed(2) + ' KiB'
       }
-
+       
       function deDuplicate (assets) {
         const extsSeen = {}
         assets.map((a) => {

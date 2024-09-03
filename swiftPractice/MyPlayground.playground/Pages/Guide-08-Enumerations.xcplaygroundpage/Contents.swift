@@ -101,3 +101,6 @@ enum Planet6: Int {
 enum CompassPoint6: String{
     case north, south, east, west
 }
+
+let earthOrder  = Planet6.earth.rawValue
+let sunsetDirection = CompassPoint6.west.rawValue

@@ -2,7 +2,6 @@
   "name": "manual-practice",
   "version": "1.0.0",
   "description": "just for practice",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,5 +9,8 @@
   "license": "ISC",
   "dependencies": {
     "three": "^0.168.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.2"
   }
 }
