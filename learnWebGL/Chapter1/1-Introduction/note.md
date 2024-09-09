@@ -23,3 +23,10 @@ system bus？
 ### Tutorial Examples
 
 personal experimentation
+
+### demo codes
+
+看不懂这个组织结构，下载下来的文件，跟这页面展示的文件看起来名称也不一样，没有入口
+
+下载下来的源文件不完整，扒源码demo找缺失文件，自己重新组织文件夹结构，最后才跑起来，虽然说是能跑起来挺有成就感的。
+但这个教学网站的demo质量让人生疑：还能不能好好学习了？
