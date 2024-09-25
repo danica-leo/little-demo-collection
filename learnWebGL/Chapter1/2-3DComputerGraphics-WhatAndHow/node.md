@@ -38,3 +38,33 @@ normal vector，model vertices，color data
 
 #### Step4: Normalize & Clip Transform
 裁截摄像头以外的画面
+
+
+#### Step5: Viewport Transfrom
+将3d对象与栅格化图像像素点对应起来
+
+#### Step6: Rasterize
+
+Rasterization is an essential process in computer graphics, especially when converting vector graphics (which use mathematical equations to define shapes) into raster graphics (which use pixels). This process is crucial for rendering images on screens or printing them.
+
+#### Step7：Shading - Fragment Shader
+
+“Shader” 翻译成“着色器”而不是“渲染器”，这是因为两者在功能和概念上有明显的区别。
+
+### 1. **Shader（着色器）**
+- **定义**: Shader 是一种在图形处理过程中执行特定任务的小程序或代码，用于决定如何计算每个像素、顶点或片段的颜色及其他属性。
+- **功能**: 它主要负责“着色”，也就是确定物体表面的颜色、光照、阴影等视觉效果。Shader 本质上是一种编程工具，用来描述如何在一个三维场景中生成二维图像的特定视觉效果。
+- **类型**: 常见的 Shader 类型包括顶点着色器（Vertex Shader）、片段着色器（Fragment Shader）和几何着色器（Geometry Shader）。
+- **翻译为“着色器”**: 这个翻译强调了 Shader 的核心作用是“着色”，即控制图形如何呈现颜色和光照效果。
+
+### 2. **Renderer（渲染器）**
+- **定义**: Renderer 是一种更为综合性的工具或引擎，负责整个图形渲染管线的执行，从物体模型的处理、光照计算到最终的图像生成。
+- **功能**: 它是一个完整的图形渲染系统，涵盖了从场景描述、光照计算、材质处理到最终图像输出的全过程。比如我们常用的三维渲染引擎 Unity、Unreal Engine 中的渲染引擎模块。
+- **职责范围更广**: 渲染器不仅仅包括着色的过程，还包括视角投影、几何变换、光线追踪等更复杂的场景管理和图形生成功能。
+- **翻译为“渲染器”**: 这个翻译更强调整个渲染过程的执行和管理，而不仅仅是颜色计算。
+
+### 总结
+- **着色器（Shader）** 强调的是图形管线中如何决定图形表面颜色和光照效果的部分，偏向于“微观”层面。
+- **渲染器（Renderer）** 强调的是整个渲染过程，涵盖了从模型数据处理到最终图像输出的完整流程，属于“宏观”层面。
+
+因此，“Shader” 翻译为“着色器”更能准确传达其在图形渲染中所扮演的角色。
