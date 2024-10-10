@@ -92,15 +92,39 @@ enum ASCIIControlCharacter:Character {
 }
 
 
-//  5.1 Implicitly Assigned Raw Values
+// 5.1 Implicitly Assigned Raw Values
 
-enum Planet6: Int {
+enum Planet5: Int {
     case mercury = 1, venues, earth, mars, jupiter, saturn, uranus, neptune
 }
 
-enum CompassPoint6: String{
+enum CompassPoint5: String{
     case north, south, east, west
 }
 
-let earthOrder  = Planet6.earth.rawValue
-let sunsetDirection = CompassPoint6.west.rawValue
+let earthOrder  = Planet5.earth.rawValue
+let sunsetDirection = CompassPoint5.west.rawValue
+
+// 5.2 Initializing from a Raw Value
+let possiblePlanet = Planet5(rawValue:7)
+
+let positionToFind = 11
+if let somePlanet = Planet5(rawValue: positionToFind) {
+    switch(somePlanet){
+    case .earth:
+        print("Mostly harmless.")
+    default:
+        print("Not a safety place for humans.")
+    }
+} else {
+    print("There isn't a planet at position \(positionToFind)")
+}
+
+/*
+ 6 Recursive Enumerations
+ */
+enum ArithmeticExpression {
+    case number(Int)
+    indirect case addition(ArithmeticExpression,ArithmeticExpression)
+    indirect case multiplication(ArithmeticExpression,ArithmeticExpression)
+}
