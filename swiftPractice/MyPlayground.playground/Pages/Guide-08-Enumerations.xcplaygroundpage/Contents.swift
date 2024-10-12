@@ -123,8 +123,19 @@ if let somePlanet = Planet5(rawValue: positionToFind) {
 /*
  6 Recursive Enumerations
  */
-enum ArithmeticExpression {
+//enum ArithmeticExpression {
+//    case number(Int)
+//    indirect case addition(ArithmeticExpression,ArithmeticExpression)
+//    indirect case multiplication(ArithmeticExpression,ArithmeticExpression)
+//}
+
+indirect enum ArithmeticExpression {
     case number(Int)
-    indirect case addition(ArithmeticExpression,ArithmeticExpression)
-    indirect case multiplication(ArithmeticExpression,ArithmeticExpression)
+    case addition(ArithmeticExpression,ArithmeticExpression)
+    case multiplication(ArithmeticExpression,ArithmeticExpression)
 }
+
+let five = ArithmeticExpression.number(5)
+let four = ArithmeticExpression.number(4)
+let sum = ArithmeticExpression.addition(four, five)
+let product = ArithmeticExpression.multiplication(sum, ArithmeticExpression.number(2))
