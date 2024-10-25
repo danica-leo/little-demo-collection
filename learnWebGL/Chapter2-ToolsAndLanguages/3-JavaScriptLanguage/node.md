@@ -9,6 +9,6 @@ keyword this between JS and others（Java，C++， ...）
 In JavaScript, the keyword this references the context from which a function is called. 
 
 ### Classes and Objects in JavaScript
-
+about "new" keyword
 
 ### Public and Private Data in a Class
