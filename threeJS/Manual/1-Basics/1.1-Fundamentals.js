@@ -1,6 +1,4 @@
 import * as THREE from 'three'
-import * as THREE from '../build/three.module.js'
-
 
 function main () {
   const canvas = document.querySelector('#canvas-1-1')

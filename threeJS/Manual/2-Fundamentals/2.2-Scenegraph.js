@@ -149,8 +149,6 @@ function main () {
 			obj.rotation.y = time
 		})
 
-
-
 		renderer.render(scene, camera)
 		requestAnimationFrame(render)
 	}
